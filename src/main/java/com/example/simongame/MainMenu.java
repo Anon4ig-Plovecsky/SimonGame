@@ -9,6 +9,8 @@ import java.net.URL;
 
 public class MainMenu implements Initializable {
     @FXML
+    private ImageView logoGame;
+    @FXML
     protected ImageView backgroundMenu;
     int width = (int) Screen.getPrimary().getBounds().getWidth();
     int height = (int)Screen.getPrimary().getBounds().getHeight();
@@ -19,7 +21,8 @@ public class MainMenu implements Initializable {
     void settingBackgroundMenu() {
         backgroundMenu.setFitWidth(width);
         backgroundMenu.setFitHeight(height);
-        //TODO backgroundMenu.setScaleX();
+        logoGame.setFitWidth(width);
+        logoGame.setFitHeight(height);
     }
     void showMenu() {
         settingBackgroundMenu();

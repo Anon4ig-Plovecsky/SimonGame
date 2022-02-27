@@ -9,14 +9,14 @@
    <children>
       <ImageView id="background" fx:id="backgroundMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="CENTER">
          <image>
-            <Image url="@../../../Image/bgr.png" />
+            <Image url="@../../../Image/Background.png" />
          </image>
       </ImageView>
       <VBox>
          <children>
-            <ImageView fitHeight="665.0" fitWidth="764.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+            <ImageView fx:id="logoGame" fitHeight="665.0" fitWidth="764.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" layoutX="30" layoutY="40">
                <image>
-                  <Image fx:id="name" url="@../../../Image/NameGame.png" />
+                  <Image url="@../../../Image/NameGame.png" />
                </image>
                <viewport>
                   <Rectangle2D />
