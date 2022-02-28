@@ -2,10 +2,10 @@ package com.example.simongame;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.stage.Screen;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class MainApplication extends Application {
     int width = (int)Screen.getPrimary().getBounds().getWidth();

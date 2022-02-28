@@ -1,13 +1,30 @@
 package com.example.simongame;
 
+import javafx.application.Platform;
+import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import java.util.ResourceBundle;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.fxml.FXML;
 import java.net.URL;
+import java.io.File;
+
 
 public class MainMenu implements Initializable {
+    private String sPathResource;
+    @FXML
+    private ImageView newGameButtonImageView;
+    @FXML
+    private ImageView exitButtonImageView;
+    @FXML
+    private StackPane stackPaneMainMenu;
+    @FXML
+    private Button newGameButton;
+    @FXML
+    private Button exitButton;
     @FXML
     private ImageView logoGame;
     @FXML
@@ -25,6 +42,29 @@ public class MainMenu implements Initializable {
         logoGame.setFitHeight(height);
     }
     void showMenu() {
+        sPathResource = new File("src/main/resources/").getAbsolutePath();
         settingBackgroundMenu();
+    }
+    @FXML
+    protected void newGameButtonNotPointed() {
+        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGame.png"));
+    }
+    @FXML
+    protected void newGameButtonOnPointed() {
+        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGamePointed.png"));
+    }
+    @FXML
+    protected void exitButtonOnPointed() {
+        Image imageOnPointed = new Image(sPathResource + "\\Image\\ExitPointed.png");
+        exitButtonImageView.setImage(imageOnPointed);
+    }
+    @FXML
+    protected void exitButtonNotPointed() {
+        Image imageOnPointed = new Image(sPathResource + "\\Image\\Exit.png");
+        exitButtonImageView.setImage(imageOnPointed);
+    }
+    @FXML
+    protected void exitButtonOnPressed() {
+        Platform.exit();
     }
 }

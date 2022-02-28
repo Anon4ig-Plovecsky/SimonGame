@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.MainMenu">
+<StackPane fx:id="stackPaneMainMenu" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.MainMenu">
    <children>
       <ImageView id="background" fx:id="backgroundMenu" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="CENTER">
          <image>
@@ -14,7 +14,7 @@
       </ImageView>
       <VBox>
          <children>
-            <ImageView fx:id="logoGame" fitHeight="665.0" fitWidth="764.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" layoutX="30" layoutY="40">
+            <ImageView fx:id="logoGame" fitHeight="1122.0" fitWidth="1824.0" layoutX="30" layoutY="40" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" VBox.vgrow="ALWAYS">
                <image>
                   <Image url="@../../../Image/NameGame.png" />
                </image>
@@ -22,8 +22,29 @@
                   <Rectangle2D />
                </viewport>
             </ImageView>
-            <Circle fx:id="center" fill="DODGERBLUE" radius="100.0" smooth="false" stroke="BLACK" strokeMiterLimit="1.0" strokeType="INSIDE" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </VBox>
+      <ImageView fx:id="newGameButtonImageView" fitHeight="108.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_RIGHT">
+         <StackPane.margin>
+            <Insets bottom="265.0" right="186.0" />
+         </StackPane.margin>
+         <image>
+            <Image url="@../../../Image/NewGame.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exitButtonImageView" fitHeight="108.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_RIGHT">
+         <image>
+            <Image url="@../../../Image/Exit.png" />
+         </image>
+         <StackPane.margin>
+            <Insets bottom="117.0" right="273.0" />
+         </StackPane.margin>
+      </ImageView>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="newGameButton" layoutX="1516.0" layoutY="924.0" mnemonicParsing="false" onMouseEntered="#newGameButtonOnPointed" onMouseExited="#newGameButtonNotPointed" opacity="0.0" prefHeight="108.0" prefWidth="402.0" text="New Game" AnchorPane.bottomAnchor="265.0" AnchorPane.rightAnchor="186.0" />
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonOnPressed" onMouseEntered="#exitButtonOnPointed" onMouseExited="#exitButtonNotPointed" opacity="0.0" prefHeight="108.0" prefWidth="227.0" text="Exit" AnchorPane.bottomAnchor="117.0" AnchorPane.rightAnchor="273.0" />
+         </children>
+      </AnchorPane>
    </children>
 </StackPane>
