@@ -54,6 +54,14 @@ public class MainMenu implements Initializable {
         newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGamePointed.png"));
     }
     @FXML
+    protected void newGameButtonPressed() {
+        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGamePressed.png"));
+    }
+    @FXML
+    protected void NewGameButtonReleased() {
+        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGamePointed.png"));
+    }
+    @FXML
     protected void exitButtonOnPointed() {
         Image imageOnPointed = new Image(sPathResource + "\\Image\\ExitPointed.png");
         exitButtonImageView.setImage(imageOnPointed);
@@ -62,6 +70,14 @@ public class MainMenu implements Initializable {
     protected void exitButtonNotPointed() {
         Image imageOnPointed = new Image(sPathResource + "\\Image\\Exit.png");
         exitButtonImageView.setImage(imageOnPointed);
+    }
+    @FXML
+    protected void exitButtonReleased() {
+        exitButtonImageView.setImage(new Image(sPathResource + "\\Image\\ExitPointed.png"));
+    }
+    @FXML
+    protected void exitButtonPressed() {
+        exitButtonImageView.setImage(new Image(sPathResource + "\\Image\\ExitPressed.png"));
     }
     @FXML
     protected void exitButtonOnPressed() {
