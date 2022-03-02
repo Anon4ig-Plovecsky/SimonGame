@@ -47,37 +47,37 @@ public class MainMenu implements Initializable {
     }
     @FXML
     protected void newGameButtonNotPointed() {
-        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGame.png"));
+        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\MainMenu\\NewGame.png"));
     }
     @FXML
     protected void newGameButtonOnPointed() {
-        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGamePointed.png"));
+        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\MainMenu\\NewGamePointed.png"));
     }
     @FXML
     protected void newGameButtonPressed() {
-        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGamePressed.png"));
+        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\MainMenu\\NewGamePressed.png"));
     }
     @FXML
     protected void NewGameButtonReleased() {
-        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\NewGamePointed.png"));
+        newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\MainMenu\\NewGamePointed.png"));
     }
     @FXML
     protected void exitButtonOnPointed() {
-        Image imageOnPointed = new Image(sPathResource + "\\Image\\ExitPointed.png");
+        Image imageOnPointed = new Image(sPathResource + "\\Image\\MainMenu\\ExitPointed.png");
         exitButtonImageView.setImage(imageOnPointed);
     }
     @FXML
     protected void exitButtonNotPointed() {
-        Image imageOnPointed = new Image(sPathResource + "\\Image\\Exit.png");
+        Image imageOnPointed = new Image(sPathResource + "\\Image\\MainMenu\\Exit.png");
         exitButtonImageView.setImage(imageOnPointed);
     }
     @FXML
     protected void exitButtonReleased() {
-        exitButtonImageView.setImage(new Image(sPathResource + "\\Image\\ExitPointed.png"));
+        exitButtonImageView.setImage(new Image(sPathResource + "\\Image\\MainMenu\\ExitPointed.png"));
     }
     @FXML
     protected void exitButtonPressed() {
-        exitButtonImageView.setImage(new Image(sPathResource + "\\Image\\ExitPressed.png"));
+        exitButtonImageView.setImage(new Image(sPathResource + "\\Image\\MainMenu\\ExitPressed.png"));
     }
     @FXML
     protected void exitButtonOnPressed() {

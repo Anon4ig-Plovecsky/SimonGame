@@ -9,14 +9,14 @@
    <children>
       <ImageView id="background" fx:id="backgroundMenu" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="CENTER">
          <image>
-            <Image url="@../../../Image/Background.png" />
+            <Image url="@../../../Image/MainMenu/Background.png" />
          </image>
       </ImageView>
       <VBox>
          <children>
             <ImageView fx:id="logoGame" fitHeight="1122.0" fitWidth="1824.0" layoutX="30" layoutY="40" pickOnBounds="true" StackPane.alignment="CENTER" VBox.vgrow="ALWAYS">
                <image>
-                  <Image url="@../../../Image/NameGame.png" />
+                  <Image url="@../../../Image/MainMenu/NameGame.png" />
                </image>
                <viewport>
                   <Rectangle2D />
@@ -26,24 +26,24 @@
       </VBox>
       <ImageView fx:id="newGameButtonImageView" fitHeight="108.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_RIGHT">
          <StackPane.margin>
-            <Insets bottom="265.0" right="106.0" />
+            <Insets bottom="225.0" right="106.0" />
          </StackPane.margin>
          <image>
-            <Image url="@../../../Image/NewGame.png" />
+            <Image url="@../../../Image/MainMenu/NewGame.png" />
          </image>
       </ImageView>
       <ImageView fx:id="exitButtonImageView" fitHeight="108.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_RIGHT">
          <image>
-            <Image url="@../../../Image/Exit.png" />
+            <Image url="@../../../Image/MainMenu/Exit.png" />
          </image>
          <StackPane.margin>
-            <Insets bottom="117.0" right="193.0" />
+            <Insets bottom="77.0" right="193.0" />
          </StackPane.margin>
       </ImageView>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="newGameButton" layoutX="1516.0" layoutY="924.0" mnemonicParsing="false" onMouseEntered="#newGameButtonOnPointed" onMouseExited="#newGameButtonNotPointed" onMousePressed="#newGameButtonPressed" onMouseReleased="#NewGameButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="402.0" text="New Game" AnchorPane.bottomAnchor="265.0" AnchorPane.rightAnchor="106.0" />
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonOnPressed" onMouseEntered="#exitButtonOnPointed" onMouseExited="#exitButtonNotPointed" onMousePressed="#exitButtonPressed" onMouseReleased="#exitButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="227.0" text="Exit" AnchorPane.bottomAnchor="117.0" AnchorPane.rightAnchor="193.0" />
+            <Button fx:id="newGameButton" layoutX="1516.0" layoutY="924.0" mnemonicParsing="false" onMouseEntered="#newGameButtonOnPointed" onMouseExited="#newGameButtonNotPointed" onMousePressed="#newGameButtonPressed" onMouseReleased="#NewGameButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="402.0" text="New Game" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="106.0" />
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonOnPressed" onMouseEntered="#exitButtonOnPointed" onMouseExited="#exitButtonNotPointed" onMousePressed="#exitButtonPressed" onMouseReleased="#exitButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="227.0" text="Exit" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="193.0" />
          </children>
       </AnchorPane>
    </children>
