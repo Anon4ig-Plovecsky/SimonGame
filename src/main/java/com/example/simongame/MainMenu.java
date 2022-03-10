@@ -1,13 +1,21 @@
 package com.example.simongame;
 
-import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import java.util.ResourceBundle;
 import javafx.scene.image.Image;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import java.io.IOException;
+import javafx.scene.Parent;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.Node;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import java.net.URL;
 import java.io.File;
@@ -19,6 +27,12 @@ public class MainMenu implements Initializable {
     private ImageView newGameButtonImageView;
     @FXML
     private ImageView exitButtonImageView;
+    @FXML
+    private Stage stage;
+    @FXML
+    private Scene scene;
+    @FXML
+    private Parent root;
     @FXML
     private StackPane stackPaneMainMenu;
     @FXML
@@ -44,6 +58,17 @@ public class MainMenu implements Initializable {
     void showMenu() {
         sPathResource = new File("src/main/resources/").getAbsolutePath();
         settingBackgroundMenu();
+    }
+    @FXML
+    protected void newGameButtonOnPressed(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SimonGame.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, width, height);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
+        stage.setResizable(false);
+        stage.show();
     }
     @FXML
     protected void newGameButtonNotPointed() {

@@ -42,7 +42,7 @@
       </ImageView>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="newGameButton" layoutX="1516.0" layoutY="924.0" mnemonicParsing="false" onMouseEntered="#newGameButtonOnPointed" onMouseExited="#newGameButtonNotPointed" onMousePressed="#newGameButtonPressed" onMouseReleased="#NewGameButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="402.0" text="New Game" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="106.0" />
+            <Button fx:id="newGameButton" layoutX="1516.0" layoutY="924.0" mnemonicParsing="false" onAction="#newGameButtonOnPressed" onMouseEntered="#newGameButtonOnPointed" onMouseExited="#newGameButtonNotPointed" onMousePressed="#newGameButtonPressed" onMouseReleased="#NewGameButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="402.0" text="New Game" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="106.0" />
             <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonOnPressed" onMouseEntered="#exitButtonOnPointed" onMouseExited="#exitButtonNotPointed" onMousePressed="#exitButtonPressed" onMouseReleased="#exitButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="227.0" text="Exit" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="193.0" />
          </children>
       </AnchorPane>
