@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
-import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Screen;
 import java.io.IOException;
@@ -13,16 +12,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import java.util.Objects;
 import javafx.fxml.FXML;
 import java.io.File;
 import java.net.URL;
+import java.util.*;
 
 public class SimonGame implements Initializable {
+    private Demonstration demonstration;
     private Parent root;
     private Stage stage;
     private Scene scene;
     private String rsc;
+    private GameProcess gameProcess;
     @FXML
     private ImageView centerButton;
     @FXML
@@ -49,6 +50,8 @@ public class SimonGame implements Initializable {
     private Button centerBtn;
     @FXML
     private Button mainMenuBtn;
+    Queue<Integer> trueSubsequence;
+    boolean sequenceDemonstration = false;
     private double width = (int)Screen.getPrimary().getBounds().getWidth();
     private double height = (int)Screen.getPrimary().getBounds().getHeight();
     private final double trueWidth = width / 1800.0;
@@ -73,9 +76,26 @@ public class SimonGame implements Initializable {
         setRedButton();
         setBlueButton();
     }
+    @FXML
+    public void gameRun() {
+        gameProcess = new GameProcess();
+        sequenceDemonstration = true;
+        trueSubsequence = new LinkedList<>();
+        trueSubsequence = gameProcess.addSubsequence(trueSubsequence);
+        allButtonsDisable();
+        demonstration = new Demonstration(rsc, greenButton, redButton, blueButton, yellowButton,
+                trueSubsequence);
+        demonstration.start();
+    }
     private void setBody() {
         body.setFitHeight(getDpY(1122));
         body.setFitWidth(getDpX(1122));
+    }
+    private void allButtonsDisable() {
+        greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenDefault.png"));
+        redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedDefault.png"));
+        blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BlueDefault.png"));
+        yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowDefault.png"));
     }
     private void setCenterButton() {
         centerButton.setFitHeight(getDpY(354));
@@ -140,15 +160,63 @@ public class SimonGame implements Initializable {
         stage.show();
     }
     @FXML
-    public void mainMenuButtonOnEntered() {
+    private void blueButtonOnReleased() {
+        if(!demonstration.isAlive())
+            blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BlueDefault.png"));
+    }
+    @FXML
+    private void blueButtonOnPressed() {
+        if(!demonstration.isAlive())
+            blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BluePressed.png"));
+    }
+    @FXML
+    private void yellowButtonOnReleased() {
+        if(!demonstration.isAlive())
+            yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowDefault.png"));
+    }
+    @FXML
+    private void yellowButtonOnPressed() {
+        if(!demonstration.isAlive())
+           yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowPressed.png"));
+    }
+    @FXML
+    private void redButtonOnReleased() {
+        if(!demonstration.isAlive())
+            redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedDefault.png"));
+    }
+    @FXML
+    private void redButtonOnPressed() {
+        if(!demonstration.isAlive())
+            redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedPressed.png"));
+    }
+    @FXML
+    private void greenButtonOnReleased() {
+        if(!demonstration.isAlive())
+            greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenDefault.png"));
+    }
+    @FXML
+    private void greenButtonOnPressed() {
+        if(!demonstration.isAlive())
+            greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenPressed.png"));
+    }
+    @FXML
+    private void centerButtonOnPressed() {
+        centerButton.setImage(new Image(rsc + "\\Image\\Simon\\CenterButton\\CenterButtonPressed.png"));
+    }
+    @FXML
+    private void centerButtonOnReleased() {
+        centerButton.setImage(new Image(rsc + "\\Image\\Simon\\CenterButton\\CenterButtonDefault.png"));
+    }
+    @FXML
+    private void mainMenuButtonOnEntered() {
         mainMenuButton.setImage(new Image(rsc + "\\Image\\Simon\\MainMenuButton\\ButtonMenuReleased.png"));
     }
     @FXML
-    public void mainMenuButtonOnExited() {
+    private void mainMenuButtonOnExited() {
         mainMenuButton.setImage(new Image(rsc + "\\Image\\Simon\\MainMenuButton\\ButtonMenuDefault.png"));
     }
     @FXML
-    protected void mainMenuButtonOnPressed() {
+    private void mainMenuButtonOnPressed() {
         mainMenuButton.setImage(new Image(rsc + "\\Image\\Simon\\MainMenuButton\\ButtonMenuPressed.png"));
     }
     @FXML
