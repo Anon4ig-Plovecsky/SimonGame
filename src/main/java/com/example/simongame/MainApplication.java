@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import javafx.scene.Parent;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Screen;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,6 +21,8 @@ public class MainApplication extends Application {
         stage.setFullScreen(true);
         stage.setTitle("Simon Game");
         stage.setResizable(false);
+        stage.setFullScreenExitHint("");
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(scene);
         stage.show();
     }

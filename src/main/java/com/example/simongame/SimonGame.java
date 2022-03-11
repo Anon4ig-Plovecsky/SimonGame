@@ -6,24 +6,26 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Screen;
 import java.io.IOException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import java.util.Random;
 import javafx.fxml.FXML;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
 
 public class SimonGame implements Initializable {
+    private final Random random = new Random();
     private Demonstration demonstration;
     private Parent root;
     private Stage stage;
     private Scene scene;
     private String rsc;
-    private GameProcess gameProcess;
     @FXML
     private ImageView centerButton;
     @FXML
@@ -50,8 +52,9 @@ public class SimonGame implements Initializable {
     private Button centerBtn;
     @FXML
     private Button mainMenuBtn;
-    Queue<Integer> trueSubsequence;
-    boolean sequenceDemonstration = false;
+    Queue<Integer> trueSubsequence = new LinkedList<>();
+    Queue<Integer> userSubsequence = new LinkedList<>();
+    boolean playersTurn = false;
     private double width = (int)Screen.getPrimary().getBounds().getWidth();
     private double height = (int)Screen.getPrimary().getBounds().getHeight();
     private final double trueWidth = width / 1800.0;
@@ -78,14 +81,23 @@ public class SimonGame implements Initializable {
     }
     @FXML
     public void gameRun() {
-        gameProcess = new GameProcess();
-        sequenceDemonstration = true;
         trueSubsequence = new LinkedList<>();
-        trueSubsequence = gameProcess.addSubsequence(trueSubsequence);
+        continueDemonstration();
+        playersTurn = true;
+    }
+    public void continueDemonstration() {
         allButtonsDisable();
+        trueSubsequence = addSubsequence();
+        for (Integer integer : trueSubsequence) {
+            userSubsequence.offer(integer);
+        }
         demonstration = new Demonstration(rsc, greenButton, redButton, blueButton, yellowButton,
                 trueSubsequence);
         demonstration.start();
+    }
+    private Queue<Integer> addSubsequence() {
+        trueSubsequence.offer(random.nextInt(4));
+        return trueSubsequence;
     }
     private void setBody() {
         body.setFitHeight(getDpY(1122));
@@ -157,7 +169,42 @@ public class SimonGame implements Initializable {
         stage.setMaximized(true);
         stage.setFullScreen(true);
         stage.setResizable(false);
+        stage.setFullScreenExitHint("");
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.show();
+    }
+    private void checkCorrectnessSubsequence(int indexButton) {
+        if(indexButton != userSubsequence.poll()) {
+            centerButton.setImage(new Image(rsc + "\\Image\\Simon\\CenterButton\\CenterButtonLitUp.png"));
+            playersTurn = false;
+        }
+        else if(userSubsequence.isEmpty()) {
+            continueDemonstration();
+        }
+    }
+    @FXML
+    private void blueColorSelected() {
+        if(!demonstration.isAlive() && playersTurn) {
+            checkCorrectnessSubsequence(2);
+        }
+    }
+    @FXML
+    private void redColorSelected() {
+        if(!demonstration.isAlive() && playersTurn) {
+            checkCorrectnessSubsequence(1);
+        }
+    }
+    @FXML
+    private void yellowColorSelected() {
+        if(!demonstration.isAlive() && playersTurn) {
+            checkCorrectnessSubsequence(3);
+        }
+    }
+    @FXML
+    private void greenColorSelected() {
+        if(!demonstration.isAlive() && playersTurn) {
+            checkCorrectnessSubsequence(0);
+        }
     }
     @FXML
     private void blueButtonOnReleased() {

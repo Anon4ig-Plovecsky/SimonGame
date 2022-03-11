@@ -37,6 +37,8 @@ public class Demonstration extends Thread {
         try {
             while (iterator.hasNext()) {
                 litUpButton(iterator.next());
+                if(iterator.hasNext())
+                    Thread.sleep(500);
             }
         } catch(InterruptedException e) {
             e.printStackTrace();

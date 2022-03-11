@@ -1,5 +1,6 @@
 package com.example.simongame;
 
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
 import javafx.application.Platform;
@@ -34,12 +35,6 @@ public class MainMenu implements Initializable {
     @FXML
     private Parent root;
     @FXML
-    private StackPane stackPaneMainMenu;
-    @FXML
-    private Button newGameButton;
-    @FXML
-    private Button exitButton;
-    @FXML
     private ImageView logoGame;
     @FXML
     protected ImageView backgroundMenu;
@@ -65,6 +60,8 @@ public class MainMenu implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, width, height);
         stage.setScene(scene);
+        stage.setFullScreenExitHint("");
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setMaximized(true);
         stage.setFullScreen(true);
         stage.setResizable(false);
