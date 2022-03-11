@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.SimonGame">
-     <ImageView pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<StackPane alignment="TOP_LEFT" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.SimonGame">
+     <ImageView pickOnBounds="true">
         <image>
            <Image url="@../../../Image/Simon/Background.png" />
         </image>
@@ -13,4 +14,65 @@
            <Rectangle2D />
         </viewport>
      </ImageView>
+   <ImageView fx:id="mainMenuButton" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
+      <image>
+         <Image url="@../../../Image/Simon/MainMenuButton/ButtonMenuDefault.png" />
+      </image>
+      <StackPane.margin>
+         <Insets right="20.0" top="20.0" />
+      </StackPane.margin>
+   </ImageView>
+   <ImageView fx:id="body" pickOnBounds="true" StackPane.alignment="CENTER">
+      <image>
+         <Image url="@../../../Image/Simon/Body.png" />
+      </image>
+      <viewport>
+         <Rectangle2D />
+      </viewport>
+   </ImageView>
+   <ImageView fx:id="centerButton" pickOnBounds="true" StackPane.alignment="CENTER">
+      <image>
+         <Image url="@../../../Image/Simon/CenterButton/CenterButtonDefault.png" />
+      </image>
+   </ImageView>
+   <Pane nodeOrientation="LEFT_TO_RIGHT" StackPane.alignment="CENTER">
+      <children>
+         <ImageView fx:id="yellowButton" layoutX="402.0" layoutY="594.0" pickOnBounds="true" StackPane.alignment="CENTER">
+            <image>
+               <Image url="@../../../Image/Simon/Yellow/YellowDefault.png" />
+            </image>
+            <StackPane.margin>
+               <Insets />
+            </StackPane.margin>
+            <viewport>
+               <Rectangle2D />
+            </viewport>
+         </ImageView>
+         <ImageView fx:id="greenButton" layoutX="399.0" layoutY="67.0" pickOnBounds="true">
+            <image>
+               <Image url="@../../../Image/Simon/Green/GreenDefault.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="redButton" layoutX="930.0" layoutY="72.0" pickOnBounds="true">
+            <image>
+               <Image url="@../../../Image/Simon/Red/RedDefault.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="blueButton" layoutX="924.0" layoutY="594.0" pickOnBounds="true">
+            <image>
+               <Image url="@../../../Image/Simon/Blue/BlueDefault.png" />
+            </image>
+         </ImageView>
+         <Button fx:id="greenBtn" layoutX="429.0" layoutY="194.0" mnemonicParsing="false" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="-45.0" text="Green" />
+         <Button fx:id="redBtn" layoutX="935.0" layoutY="194.0" mnemonicParsing="false" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="45.0" text="Red" />
+         <Button fx:id="yellowBtn" layoutX="429.0" layoutY="689.0" mnemonicParsing="false" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="-135.0" text="Yellow" />
+         <Button fx:id="blueBtn" layoutX="935.0" layoutY="689.0" mnemonicParsing="false" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="135.0" text="Blue" />
+      </children>
+   </Pane>
+   <Button fx:id="mainMenuBtn" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#goToMainMenu" onMouseEntered="#mainMenuButtonOnEntered" onMouseExited="#mainMenuButtonOnExited" onMousePressed="#mainMenuButtonOnPressed" onMouseReleased="#mainMenuButtonOnReleased" opacity="0.0" prefHeight="150.0" prefWidth="336.0" text="MainMenu" StackPane.alignment="TOP_RIGHT">
+      <StackPane.margin>
+         <Insets right="20.0" top="20.0" />
+      </StackPane.margin>
+   </Button>
+   <Button fx:id="centerBtn" mnemonicParsing="false" opacity="0.0" prefHeight="232.0" prefWidth="257.0" text="CenterBtn" StackPane.alignment="CENTER" />
 </StackPane>

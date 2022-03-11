@@ -43,7 +43,7 @@ public class MainMenu implements Initializable {
     private ImageView logoGame;
     @FXML
     protected ImageView backgroundMenu;
-    int width = (int) Screen.getPrimary().getBounds().getWidth();
+    int width = (int)Screen.getPrimary().getBounds().getWidth();
     int height = (int)Screen.getPrimary().getBounds().getHeight();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
