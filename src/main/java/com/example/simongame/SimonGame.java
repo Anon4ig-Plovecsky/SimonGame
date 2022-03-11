@@ -1,12 +1,12 @@
 package com.example.simongame;
 
+import javafx.scene.input.KeyCombination;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.input.KeyCombination;
 import javafx.stage.Screen;
 import java.io.IOException;
 import javafx.scene.Parent;
@@ -176,6 +176,13 @@ public class SimonGame implements Initializable {
     private void checkCorrectnessSubsequence(int indexButton) {
         if(indexButton != userSubsequence.poll()) {
             centerButton.setImage(new Image(rsc + "\\Image\\Simon\\CenterButton\\CenterButtonLitUp.png"));
+            try {
+                AllButtonBlink allButtonBlink = new AllButtonBlink(rsc, greenButton, redButton,
+                        blueButton, yellowButton);
+                allButtonBlink.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             playersTurn = false;
         }
         else if(userSubsequence.isEmpty()) {

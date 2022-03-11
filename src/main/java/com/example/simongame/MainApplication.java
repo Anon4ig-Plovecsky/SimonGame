@@ -1,10 +1,10 @@
 package com.example.simongame;
 
+import javafx.scene.input.KeyCombination;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import javafx.scene.Parent;
-import javafx.scene.input.KeyCombination;
 import javafx.stage.Screen;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

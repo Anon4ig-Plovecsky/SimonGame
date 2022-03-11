@@ -1,10 +1,8 @@
 package com.example.simongame;
 
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
 import javafx.application.Platform;
-import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import java.util.ResourceBundle;
 import javafx.scene.image.Image;

@@ -6,12 +6,12 @@ import java.util.Iterator;
 import java.util.Queue;
 
 public class Demonstration extends Thread {
-    ImageView greenButton;
-    ImageView redButton;
-    ImageView blueButton;
-    ImageView yellowButton;
-    String rsc;
-    Queue<Integer> trueSubsequence;
+    private final ImageView greenButton;
+    private final ImageView redButton;
+    private final ImageView blueButton;
+    private final ImageView yellowButton;
+    private final String rsc;
+    private final Queue<Integer> trueSubsequence;
     public Demonstration(
             String rsc,
             ImageView greenButton,
