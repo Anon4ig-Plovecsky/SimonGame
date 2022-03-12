@@ -75,6 +75,7 @@ public class MainMenu implements Initializable {
     }
     @FXML
     protected void newGameButtonPressed() {
+        PlaySound.play(Sounds.PLAY_TAP);
         newGameButtonImageView.setImage(new Image(sPathResource + "\\Image\\MainMenu\\NewGamePressed.png"));
     }
     @FXML
@@ -97,6 +98,7 @@ public class MainMenu implements Initializable {
     }
     @FXML
     protected void exitButtonPressed() {
+        PlaySound.play(Sounds.PLAY_TAP);
         exitButtonImageView.setImage(new Image(sPathResource + "\\Image\\MainMenu\\ExitPressed.png"));
     }
     @FXML

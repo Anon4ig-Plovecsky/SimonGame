@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Simon Game" options="--add-exports jdk.jfr/jdk.jfr.internal.consumer=com.example.simongame --add-exports java.xml/jdk.xml.internal=com.example.simongame" />
+      <module name="Simon Game" options="" />
     </option>
   </component>
 </project>
