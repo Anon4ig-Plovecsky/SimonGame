@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
-import javafx.scene.media.Media;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Screen;
 import java.io.IOException;
@@ -27,7 +26,6 @@ public class SimonGame implements Initializable {
     private Stage stage;
     private Scene scene;
     private String rsc;
-    private Media media;
     @FXML
     private ImageView centerButton;
     @FXML
@@ -61,8 +59,6 @@ public class SimonGame implements Initializable {
     private double height = (int)Screen.getPrimary().getBounds().getHeight();
     private final double trueWidth = width / 1800.0;
     private final double trueHeight = height / 1125.0;
-    private final double centerX = getDpX(1800.0 / 2.0);
-    private final double centerY = getDpY(1125.0 / 2.0);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpScene();
@@ -167,6 +163,8 @@ public class SimonGame implements Initializable {
     }
     @FXML
     public void goToMainMenu(ActionEvent event) throws IOException {
+        if(demonstration != null && demonstration.isAlive())
+            demonstration.interrupt();
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainView.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, width, height);

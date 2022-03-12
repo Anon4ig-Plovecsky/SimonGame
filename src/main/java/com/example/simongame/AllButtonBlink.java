@@ -4,10 +4,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
 public class AllButtonBlink extends Thread{
-    private final ImageView greenButton;
-    private final ImageView redButton;
-    private final ImageView blueButton;
     private final ImageView yellowButton;
+    private final ImageView greenButton;
+    private final ImageView blueButton;
+    private final ImageView redButton;
     private final String rsc;
     public AllButtonBlink(
             String rsc,
@@ -29,6 +29,7 @@ public class AllButtonBlink extends Thread{
         redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedLitUp.png"));
         blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BlueLitUp.png"));
         yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowLitUp.png"));
+        greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenLitUp.png"));
         try {
             Thread.sleep(700);
         } catch (InterruptedException e) {
