@@ -10,6 +10,7 @@ module com.example.simongame {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires javafx.media;
+    requires org.json;
 
     opens com.example.simongame to javafx.fxml;
     exports com.example.simongame;
