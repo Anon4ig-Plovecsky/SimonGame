@@ -27,6 +27,8 @@ public class SimonGame implements Initializable {
     private Scene scene;
     private String rsc;
     @FXML
+    private ImageView background;
+    @FXML
     private ImageView centerButton;
     @FXML
     private ImageView body;
@@ -68,6 +70,8 @@ public class SimonGame implements Initializable {
         rsc = new File("src/main/resources/").getAbsolutePath();
     }
     private void setUpScene() {
+        background.setFitHeight(height);
+        background.setFitWidth(width);
         setPath();
         setBody();
         setMainMenuButton();

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 <StackPane alignment="TOP_LEFT" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.SimonGame">
-     <ImageView pickOnBounds="true">
+     <ImageView fx:id="background" pickOnBounds="true">
         <image>
            <Image url="@../../../Image/Simon/Background.png" />
         </image>
