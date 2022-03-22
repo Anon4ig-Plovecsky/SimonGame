@@ -46,28 +46,28 @@ public class Demonstration extends Thread {
     private void litUpButton(int indexButton) throws InterruptedException {
         switch (indexButton) {
             case 0 -> {
-                greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenLitUp.png"));
+                greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenLitUp.png"));
                 PlaySound.play(Sounds.PLAY_BUTTON_ZERO);
                 Thread.sleep(1300);
-                greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenDefault.png"));
+                greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenDefault.png"));
             }
             case 1 -> {
-                redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedLitUp.png"));
+                redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedLitUp.png"));
                 PlaySound.play(Sounds.PLAY_BUTTON_ONE);
                 Thread.sleep(1300);
-                redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedDefault.png"));
+                redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
             }
             case 2 -> {
-                blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BlueLitUp.png"));
+                blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueLitUp.png"));
                 PlaySound.play(Sounds.PLAY_BUTTON_TWO);
                 Thread.sleep(1300);
-                blueButton.setImage((new Image(rsc + "\\Image\\Simon\\Blue\\BlueDefault.png")));
+                blueButton.setImage((new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png")));
             }
             case 3 -> {
-                yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowLitUp.png"));
+                yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowLitUp.png"));
                 PlaySound.play(Sounds.PLAY_BUTTON_THREE);
                 Thread.sleep(1300);
-                yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowDefault.png"));
+                yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
             }
         }
     }

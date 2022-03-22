@@ -64,7 +64,7 @@ public class SimonGame implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpScene();
-        centerButton.setImage(new Image(rsc + "\\Image\\Simon\\CenterButton\\CenterButtonLitUp.png"));
+        centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
     }
     private void setPath() {
         rsc = new File("src/main/resources/").getAbsolutePath();
@@ -109,10 +109,10 @@ public class SimonGame implements Initializable {
         body.setFitWidth(getDpX(1122));
     }
     private void allButtonsDisable() {
-        greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenDefault.png"));
-        redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedDefault.png"));
-        blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BlueDefault.png"));
-        yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowDefault.png"));
+        greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenDefault.png"));
+        redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
+        blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
+        yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
     }
     private void setCenterButton() {
         centerButton.setFitHeight(getDpY(354));
@@ -182,7 +182,7 @@ public class SimonGame implements Initializable {
     }
     private void checkCorrectnessSubsequence(int indexButton) {
         if(indexButton != userSubsequence.poll()) {
-            centerButton.setImage(new Image(rsc + "\\Image\\Simon\\CenterButton\\CenterButtonLitUp.png"));
+            centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
             try {
                 AllButtonBlink allButtonBlink = new AllButtonBlink(rsc, greenButton, redButton,
                         blueButton, yellowButton);
@@ -225,76 +225,76 @@ public class SimonGame implements Initializable {
     @FXML
     private void blueButtonOnReleased() {
         if(demonstration == null || !demonstration.isAlive())
-            blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BlueDefault.png"));
+            blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
     }
     @FXML
     private void blueButtonOnPressed() {
         if(demonstration == null || !demonstration.isAlive()) {
-            blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BluePressed.png"));
+            blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BluePressed.png"));
             PlaySound.play(Sounds.PLAY_BUTTON_TWO);
         }
     }
     @FXML
     private void yellowButtonOnReleased() {
         if(demonstration == null || !demonstration.isAlive())
-            yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowDefault.png"));
+            yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
     }
     @FXML
     private void yellowButtonOnPressed() {
         if (demonstration == null || !demonstration.isAlive()) {
-            yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowPressed.png"));
+            yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowPressed.png"));
             PlaySound.play(Sounds.PLAY_BUTTON_THREE);
         }
     }
     @FXML
     private void redButtonOnReleased() {
         if(demonstration == null || !demonstration.isAlive())
-            redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedDefault.png"));
+            redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
     }
     @FXML
     private void redButtonOnPressed() {
         if(demonstration == null || !demonstration.isAlive()) {
-            redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedPressed.png"));
+            redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedPressed.png"));
             PlaySound.play(Sounds.PLAY_BUTTON_ONE);
         }
     }
     @FXML
     private void greenButtonOnReleased() {
         if(demonstration == null || !demonstration.isAlive())
-            greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenDefault.png"));
+            greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenDefault.png"));
     }
     @FXML
     private void greenButtonOnPressed() {
         if(demonstration == null || !demonstration.isAlive()) {
-            greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenPressed.png"));
+            greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenPressed.png"));
             PlaySound.play(Sounds.PLAY_BUTTON_ZERO);
         }
     }
     @FXML
     private void centerButtonOnPressed() {
         PlaySound.play(Sounds.PLAY_TAP);
-        centerButton.setImage(new Image(rsc + "\\Image\\Simon\\CenterButton\\CenterButtonPressed.png"));
+        centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonPressed.png"));
     }
     @FXML
     private void centerButtonOnReleased() {
-        centerButton.setImage(new Image(rsc + "\\Image\\Simon\\CenterButton\\CenterButtonDefault.png"));
+        centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonDefault.png"));
     }
     @FXML
     private void mainMenuButtonOnEntered() {
-        mainMenuButton.setImage(new Image(rsc + "\\Image\\Simon\\MainMenuButton\\ButtonMenuReleased.png"));
+        mainMenuButton.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuReleased.png"));
     }
     @FXML
     private void mainMenuButtonOnExited() {
-        mainMenuButton.setImage(new Image(rsc + "\\Image\\Simon\\MainMenuButton\\ButtonMenuDefault.png"));
+        mainMenuButton.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuDefault.png"));
     }
     @FXML
     private void mainMenuButtonOnPressed() {
-        mainMenuButton.setImage(new Image(rsc + "\\Image\\Simon\\MainMenuButton\\ButtonMenuPressed.png"));
+        mainMenuButton.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuPressed.png"));
         PlaySound.play(Sounds.PLAY_TAP);
     }
     @FXML
     protected void mainMenuButtonOnReleased() {
-        mainMenuButton.setImage(new Image(rsc + "\\Image\\Simon\\MainMenuButton\\ButtonMenuReleased.png"));
+        mainMenuButton.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuReleased.png"));
     }
     double getDpX(double px) {
         return px * trueWidth;

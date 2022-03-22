@@ -25,19 +25,19 @@ public class AllButtonBlink extends Thread{
     @Override
     public void run() {
         super.run();
-        greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenLitUp.png"));
-        redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedLitUp.png"));
-        blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BlueLitUp.png"));
-        yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowLitUp.png"));
-        greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenLitUp.png"));
+        greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenLitUp.png"));
+        redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedLitUp.png"));
+        blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueLitUp.png"));
+        yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowLitUp.png"));
+        greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenLitUp.png"));
         try {
             Thread.sleep(700);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        greenButton.setImage(new Image(rsc + "\\Image\\Simon\\Green\\GreenDefault.png"));
-        redButton.setImage(new Image(rsc + "\\Image\\Simon\\Red\\RedDefault.png"));
-        blueButton.setImage(new Image(rsc + "\\Image\\Simon\\Blue\\BlueDefault.png"));
-        yellowButton.setImage(new Image(rsc + "\\Image\\Simon\\Yellow\\YellowDefault.png"));
+        greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenDefault.png"));
+        redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
+        blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
+        yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
     }
 }
