@@ -14,11 +14,9 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Node;
-import java.util.Objects;
 import javafx.fxml.FXML;
 import java.net.URL;
 import java.io.File;
-
 
 public class MainMenu implements Initializable {
     private String sPathResource;
@@ -36,8 +34,8 @@ public class MainMenu implements Initializable {
     private ImageView logoGame;
     @FXML
     protected ImageView backgroundMenu;
-    int width = (int)Screen.getPrimary().getBounds().getWidth();
     int height = (int)Screen.getPrimary().getBounds().getHeight();
+    int width = (int)Screen.getPrimary().getBounds().getWidth();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showMenu();

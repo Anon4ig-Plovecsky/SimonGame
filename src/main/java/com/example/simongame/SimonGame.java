@@ -1,12 +1,14 @@
 package com.example.simongame;
 
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.stage.Screen;
 import java.io.IOException;
 import javafx.scene.Parent;
@@ -26,6 +28,8 @@ public class SimonGame implements Initializable {
     private Stage stage;
     private Scene scene;
     private String rsc;
+    @FXML
+    private ImageView score;
     @FXML
     private ImageView background;
     @FXML
@@ -74,6 +78,7 @@ public class SimonGame implements Initializable {
         background.setFitWidth(width);
         setPath();
         setBody();
+        setScore();
         setMainMenuButton();
         setCenterButton();
         setYellowButton();
@@ -113,6 +118,11 @@ public class SimonGame implements Initializable {
         redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
         blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
         yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
+    }
+    private void setScore() {
+        score.setFitHeight(getDpY(92));
+        score.setFitWidth(getDpX(241));
+        StackPane.setMargin(score, new Insets(0, getDpX(40), getDpY(400), 0));
     }
     private void setCenterButton() {
         centerButton.setFitHeight(getDpY(354));
