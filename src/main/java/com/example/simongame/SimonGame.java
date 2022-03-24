@@ -27,9 +27,15 @@ public class SimonGame implements Initializable {
     private Parent root;
     private Stage stage;
     private Scene scene;
+    private Score score;
+    private int totalScore = 0;
     private String rsc;
     @FXML
-    private ImageView score;
+    private StackPane stackPane;
+    @FXML
+    private ImageView firstNumberScore;
+    @FXML
+    private ImageView scoreImage;
     @FXML
     private ImageView background;
     @FXML
@@ -61,14 +67,15 @@ public class SimonGame implements Initializable {
     Queue<Integer> trueSubsequence = new LinkedList<>();
     Queue<Integer> userSubsequence = new LinkedList<>();
     boolean playersTurn = false;
-    private double width = (int)Screen.getPrimary().getBounds().getWidth();
-    private double height = (int)Screen.getPrimary().getBounds().getHeight();
+    private final double width = (int)Screen.getPrimary().getBounds().getWidth();
+    private final double height = (int)Screen.getPrimary().getBounds().getHeight();
     private final double trueWidth = width / 1800.0;
     private final double trueHeight = height / 1125.0;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpScene();
         centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
+        score = new Score(stackPane, firstNumberScore, rsc);
     }
     private void setPath() {
         rsc = new File("src/main/resources/").getAbsolutePath();
@@ -81,6 +88,7 @@ public class SimonGame implements Initializable {
         setScore();
         setMainMenuButton();
         setCenterButton();
+        setFirstNumberScore();
         setYellowButton();
         setGreenButton();
         setRedButton();
@@ -90,6 +98,9 @@ public class SimonGame implements Initializable {
     public void gameRun() {
         if(demonstration != null && demonstration.isAlive())
             demonstration.interrupt();
+        score.deleteScore();
+        totalScore = 0;
+        score.setupScore(totalScore);
         trueSubsequence = new LinkedList<>();
         continueDemonstration();
         playersTurn = true;
@@ -119,10 +130,15 @@ public class SimonGame implements Initializable {
         blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
         yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
     }
+    private void setFirstNumberScore() {
+        firstNumberScore.setFitHeight(getDpY(94));
+        firstNumberScore.setFitWidth(getDpX(67));
+        StackPane.setMargin(firstNumberScore, new Insets(0, getDpX(60), getDpY(160), 0));
+    }
     private void setScore() {
-        score.setFitHeight(getDpY(92));
-        score.setFitWidth(getDpX(241));
-        StackPane.setMargin(score, new Insets(0, getDpX(40), getDpY(400), 0));
+        scoreImage.setFitHeight(getDpY(92));
+        scoreImage.setFitWidth(getDpX(241));
+        StackPane.setMargin(scoreImage, new Insets(0, getDpX(40), getDpY(400), 0));
     }
     private void setCenterButton() {
         centerButton.setFitHeight(getDpY(354));
@@ -205,30 +221,32 @@ public class SimonGame implements Initializable {
             playersTurn = false;
         }
         else if(userSubsequence.isEmpty()) {
+            totalScore++;
+            score.setupScore(totalScore);
             continueDemonstration();
         }
     }
     @FXML
     private void blueColorSelected() {
-        if(!demonstration.isAlive() && playersTurn) {
+        if(demonstration != null && !demonstration.isAlive() && playersTurn) {
             checkCorrectnessSubsequence(2);
         }
     }
     @FXML
     private void redColorSelected() {
-        if(!demonstration.isAlive() && playersTurn) {
+        if(demonstration != null && !demonstration.isAlive() && playersTurn) {
             checkCorrectnessSubsequence(1);
         }
     }
     @FXML
     private void yellowColorSelected() {
-        if(!demonstration.isAlive() && playersTurn) {
+        if(demonstration != null && !demonstration.isAlive() && playersTurn) {
             checkCorrectnessSubsequence(3);
         }
     }
     @FXML
     private void greenColorSelected() {
-        if(!demonstration.isAlive() && playersTurn) {
+        if(demonstration != null && !demonstration.isAlive() && playersTurn) {
             checkCorrectnessSubsequence(0);
         }
     }

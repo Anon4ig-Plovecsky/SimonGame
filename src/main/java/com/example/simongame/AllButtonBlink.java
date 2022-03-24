@@ -30,6 +30,9 @@ public class AllButtonBlink extends Thread{
         blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueLitUp.png"));
         yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowLitUp.png"));
         greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenLitUp.png"));
+        redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedLitUp.png"));
+        blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueLitUp.png"));
+        yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowLitUp.png"));
         try {
             Thread.sleep(700);
         } catch (InterruptedException e) {

@@ -33,13 +33,21 @@
          <Rectangle2D />
       </viewport>
    </ImageView>
-   <ImageView fx:id="score" fitHeight="100.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+   <ImageView fx:id="scoreImage" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
       <image>
          <Image url="@../../../Image/Simon/Score.png" />
       </image>
       <StackPane.margin>
-         <Insets bottom="400" />
+         <Insets bottom="400.0" right="40.0" />
       </StackPane.margin>
+   </ImageView>
+   <ImageView fx:id="firstNumberScore" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+      <StackPane.margin>
+         <Insets bottom="160.0" right="60.0" />
+      </StackPane.margin>
+      <image>
+         <Image url="@../../../Image/Simon/Numbers/Zero.png" />
+      </image>
    </ImageView>
    <ImageView fx:id="centerButton" pickOnBounds="true" StackPane.alignment="CENTER">
       <image>
