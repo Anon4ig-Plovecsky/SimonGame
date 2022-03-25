@@ -1,5 +1,7 @@
 package com.example.simongame;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -24,6 +26,7 @@ import java.net.URL;
 import java.util.*;
 
 public class SimonGame implements Initializable {
+    private final int maxLength = 16;
     private final Random random = new Random();
     private Demonstration demonstration;
     private Parent root;
@@ -98,6 +101,7 @@ public class SimonGame implements Initializable {
         setRedButton();
         setBlueButton();
         setEditTextYourName();
+        editTextYourNameHasChanged();
     }
     @FXML
     public void gameRun() {
@@ -240,6 +244,17 @@ public class SimonGame implements Initializable {
             score.setupScore(totalScore);
             continueDemonstration();
         }
+    }
+    private void editTextYourNameHasChanged() {
+        editTextYourName.textProperty().addListener(new ChangeListener<String>(){
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                if(Objects.equals(editTextYourName.getText(), " "))
+                    editTextYourName.setText("");
+                if(editTextYourName.getText().length() >= maxLength)
+                    editTextYourName.setText(editTextYourName.getText().substring(0, maxLength));
+            }
+        });
     }
     @FXML
     private void blueColorSelected() {
