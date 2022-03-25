@@ -4,6 +4,9 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.image.ImageView;
 import javafx.application.Platform;
 import javafx.fxml.Initializable;
+
+import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
@@ -53,10 +56,12 @@ public class MainMenu implements Initializable {
     @FXML
     protected void newGameButtonOnPressed(ActionEvent event) throws IOException {
         String name = "SimonGame.fxml";
+        String css = Paths.get("./src/main/java/com/example/simongame/TextConfigurations.css").toAbsolutePath().toUri().toString();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(name));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, width, height);
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.setFullScreenExitHint("");
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);

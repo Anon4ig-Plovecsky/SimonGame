@@ -1,14 +1,22 @@
 package com.example.simongame;
 
+import javafx.beans.value.ObservableValue;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Control;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Region;
+import javafx.scene.control.Skin;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import java.io.IOException;
 import javafx.scene.Parent;
@@ -30,6 +38,8 @@ public class SimonGame implements Initializable {
     private Score score;
     private int totalScore = 0;
     private String rsc;
+    @FXML
+    private TextField editTextYourName;
     @FXML
     private StackPane stackPane;
     @FXML
@@ -93,6 +103,7 @@ public class SimonGame implements Initializable {
         setGreenButton();
         setRedButton();
         setBlueButton();
+        setEditTextYourName();
     }
     @FXML
     public void gameRun() {
@@ -129,6 +140,30 @@ public class SimonGame implements Initializable {
         redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
         blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
         yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
+    }
+    private void setEditTextYourName() {
+//        editTextYourName.skinProperty().addListener(new ChangeListener<Skin<?>>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Skin<?>> observableValue, Skin<?> skin, Skin<?> t1) {
+//                if(t1 != null && t1.getNode() instanceof Region region) {
+//                    region.setBackground(Background.EMPTY);
+//                    region.getChildrenUnmodifiable().stream().filter(n -> n instanceof Region)
+//                            .map(n -> (Region) n)
+//                            .forEach(n -> n.setBackground(Background.EMPTY));
+//                    region.getChildrenUnmodifiable().stream().filter(n -> n instanceof Region)
+//                            .map(n -> (Control) n)
+//                            .forEach(c -> c.skinProperty().addListener(this));
+//                }
+//            }
+//        });
+        editTextYourName.setMaxWidth(getDpX(465));
+        editTextYourName.setMinWidth(getDpX(465));
+        editTextYourName.setPrefWidth(getDpX(465));
+        editTextYourName.setMinHeight(getDpY(105));
+        editTextYourName.setMaxHeight(getDpY(105));
+        editTextYourName.setPrefHeight(getDpY(105));
+        editTextYourName.setFont(new Font("Lobster Regular", getDpY(50)));
+        StackPane.setMargin(editTextYourName, new Insets(0, 0, getDpY(200), 0));
     }
     private void setFirstNumberScore() {
         firstNumberScore.setFitHeight(getDpY(94));

@@ -1,0 +1,17 @@
+.root{
+
+}
+.text-field{
+    -fx-background-color: rgba(53,89,119,0.0);
+    -fx-text-fill: #f96b3b;
+    -fx-prompt-text-fill: #f96b3b;
+}
+.text-field .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-field .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-field .scroll-pane .content{
+    -fx-background-color: transparent;
+}
