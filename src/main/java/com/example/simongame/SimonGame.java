@@ -1,16 +1,10 @@
 package com.example.simongame;
 
-import javafx.beans.value.ObservableValue;
-import javafx.beans.value.ChangeListener;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Control;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Region;
-import javafx.scene.control.Skin;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
@@ -142,20 +136,6 @@ public class SimonGame implements Initializable {
         yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
     }
     private void setEditTextYourName() {
-//        editTextYourName.skinProperty().addListener(new ChangeListener<Skin<?>>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Skin<?>> observableValue, Skin<?> skin, Skin<?> t1) {
-//                if(t1 != null && t1.getNode() instanceof Region region) {
-//                    region.setBackground(Background.EMPTY);
-//                    region.getChildrenUnmodifiable().stream().filter(n -> n instanceof Region)
-//                            .map(n -> (Region) n)
-//                            .forEach(n -> n.setBackground(Background.EMPTY));
-//                    region.getChildrenUnmodifiable().stream().filter(n -> n instanceof Region)
-//                            .map(n -> (Control) n)
-//                            .forEach(c -> c.skinProperty().addListener(this));
-//                }
-//            }
-//        });
         editTextYourName.setMaxWidth(getDpX(465));
         editTextYourName.setMinWidth(getDpX(465));
         editTextYourName.setPrefWidth(getDpX(465));

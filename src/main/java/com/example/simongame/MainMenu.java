@@ -4,14 +4,12 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.image.ImageView;
 import javafx.application.Platform;
 import javafx.fxml.Initializable;
-
-import java.nio.file.Paths;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import javafx.scene.Parent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
