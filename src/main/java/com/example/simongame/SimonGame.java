@@ -36,6 +36,10 @@ public class SimonGame implements Initializable {
     private int totalScore = 0;
     private String rsc;
     @FXML
+    private Button saveResultBtn;
+    @FXML
+    private ImageView saveResultButton;
+    @FXML
     private TextField editTextYourName;
     @FXML
     private StackPane stackPane;
@@ -73,6 +77,7 @@ public class SimonGame implements Initializable {
     private Button mainMenuBtn;
     Queue<Integer> trueSubsequence = new LinkedList<>();
     Queue<Integer> userSubsequence = new LinkedList<>();
+    boolean record = false;
     boolean playersTurn = false;
     private final double width = (int)Screen.getPrimary().getBounds().getWidth();
     private final double height = (int)Screen.getPrimary().getBounds().getHeight();
@@ -94,6 +99,7 @@ public class SimonGame implements Initializable {
         setBody();
         setScore();
         setMainMenuButton();
+        setSaveResultButton();
         setCenterButton();
         setFirstNumberScore();
         setYellowButton();
@@ -107,6 +113,8 @@ public class SimonGame implements Initializable {
     public void gameRun() {
         if(demonstration != null && demonstration.isAlive())
             demonstration.interrupt();
+        saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveInactive.png"));
+        record = false;
         score.deleteScore();
         totalScore = 0;
         score.setupScore(totalScore);
@@ -139,6 +147,13 @@ public class SimonGame implements Initializable {
         blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
         yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
     }
+    private void setSaveResultButton() {
+        saveResultButton.setFitHeight(getDpY(150));
+        saveResultBtn.setPrefHeight(getDpY(150));
+        saveResultBtn.setPrefWidth(getDpX(559));
+        StackPane.setMargin(saveResultBtn, new Insets(0, getDpX(5), getDpY(30), 0));
+        StackPane.setMargin(saveResultButton, new Insets(0, getDpX(5), getDpY(30), 0));
+    }
     private void setEditTextYourName() {
         editTextYourName.setMaxWidth(getDpX(465));
         editTextYourName.setMinWidth(getDpX(465));
@@ -147,7 +162,7 @@ public class SimonGame implements Initializable {
         editTextYourName.setMaxHeight(getDpY(105));
         editTextYourName.setPrefHeight(getDpY(105));
         editTextYourName.setFont(new Font("Lobster Regular", getDpY(50)));
-        StackPane.setMargin(editTextYourName, new Insets(0, 0, getDpY(200), 0));
+        StackPane.setMargin(editTextYourName, new Insets(0, getDpX(15), getDpY(200), 0));
     }
     private void setFirstNumberScore() {
         firstNumberScore.setFitHeight(getDpY(94));
@@ -241,6 +256,8 @@ public class SimonGame implements Initializable {
         }
         else if(userSubsequence.isEmpty()) {
             totalScore++;
+            record = true;
+            saveResultButtonOnExited();
             score.setupScore(totalScore);
             continueDemonstration();
         }
@@ -336,6 +353,35 @@ public class SimonGame implements Initializable {
     @FXML
     private void centerButtonOnReleased() {
         centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonDefault.png"));
+    }
+    @FXML
+    private void beginSaveResult() {
+        if(record && !editTextYourName.getText().equals("")) {
+            SaveData saveData = new SaveData(totalScore, editTextYourName.getText());
+            saveData.start();
+        }
+    }
+    @FXML
+    private void saveResultButtonOnEntered() {
+        if(record && !editTextYourName.getText().equals(""))
+            saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveRelease.png"));
+    }
+    @FXML
+    private void saveResultButtonOnExited() {
+        if(record && !editTextYourName.getText().equals(""))
+            saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveDefault.png"));
+    }
+    @FXML
+    private void saveResultButtonOnPressed() {
+        if(record && !editTextYourName.getText().equals("")) {
+            saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SavePressed.png"));
+            PlaySound.play(Sounds.PLAY_SAVE);
+        }
+    }
+    @FXML
+    private void saveResultButtonOnReleased() {
+        if(record && !editTextYourName.getText().equals(""))
+            saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveRelease.png"));
     }
     @FXML
     private void mainMenuButtonOnEntered() {

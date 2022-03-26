@@ -56,6 +56,14 @@
          <Image url="@../../../Image/Simon/CenterButton/CenterButtonDefault.png" />
       </image>
    </ImageView>
+   <ImageView fx:id="saveResultButton" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_RIGHT">
+      <StackPane.margin>
+         <Insets bottom="30.0" right="5.0" />
+      </StackPane.margin>
+      <image>
+         <Image url="@../../../Image/Simon/SaveResultButton/SaveInactive.png" />
+      </image>
+   </ImageView>
    <Pane nodeOrientation="LEFT_TO_RIGHT" StackPane.alignment="CENTER">
       <children>
          <ImageView fx:id="yellowButton" layoutX="402.0" layoutY="594.0" pickOnBounds="true" StackPane.alignment="CENTER">
@@ -101,7 +109,12 @@
          <Font name="Lobster Regular" size="50.0" />
       </font>
       <StackPane.margin>
-         <Insets bottom="200.0" />
+         <Insets bottom="200.0" right="15.0" />
       </StackPane.margin>
    </TextField>
+   <Button fx:id="saveResultBtn" mnemonicParsing="false" onAction="#beginSaveResult" onMouseEntered="#saveResultButtonOnEntered" onMouseExited="#saveResultButtonOnExited" onMousePressed="#saveResultButtonOnPressed" onMouseReleased="#saveResultButtonOnReleased" opacity="0.0" prefHeight="150.0" prefWidth="559.0" text="SaveButton" StackPane.alignment="BOTTOM_RIGHT">
+      <StackPane.margin>
+         <Insets bottom="30.0" right="5.0" />
+      </StackPane.margin>
+   </Button>
 </StackPane>

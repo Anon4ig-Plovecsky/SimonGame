@@ -11,6 +11,7 @@ module com.example.simongame {
     requires eu.hansolo.tilesfx;
     requires javafx.media;
     requires org.json;
+    requires json.simple;
 
     opens com.example.simongame to javafx.fxml;
     exports com.example.simongame;

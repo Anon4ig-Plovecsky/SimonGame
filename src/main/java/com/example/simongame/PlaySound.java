@@ -16,6 +16,7 @@ public class PlaySound {
                 case PLAY_BUTTON_THREE -> mediaPlayer = new MediaPlayer(new Media(new File(path + "/button4.mp3").toURI().toString()));
                 case PLAY_TAP -> mediaPlayer = new MediaPlayer(new Media(new File(path + "/tap.mp3").toURI().toString()));
                 case PLAY_GAME_OVER -> mediaPlayer = new MediaPlayer(new Media(new File(path + "/lose.wav").toURI().toString()));
+                case PLAY_SAVE -> mediaPlayer = new MediaPlayer(new Media(new File(path + "/save.mp3").toURI().toString()));
             }
             mediaPlayer.play();
         } catch (Exception e) {
