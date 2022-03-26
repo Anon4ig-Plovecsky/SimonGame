@@ -26,7 +26,7 @@ import java.net.URL;
 import java.util.*;
 
 public class SimonGame implements Initializable {
-    private final int maxLength = 16;
+    private final int maxLength = 17;
     private final Random random = new Random();
     private Demonstration demonstration;
     private Parent root;
@@ -270,6 +270,7 @@ public class SimonGame implements Initializable {
                     editTextYourName.setText("");
                 if(editTextYourName.getText().length() >= maxLength)
                     editTextYourName.setText(editTextYourName.getText().substring(0, maxLength));
+                saveResultButtonOnExited();
             }
         });
     }

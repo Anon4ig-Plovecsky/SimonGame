@@ -1,13 +1,15 @@
 package com.example.simongame;
 
+import org.json.JSONTokener;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
+
+import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+
 import org.json.JSONObject;
-import java.io.IOException;
-import java.io.PrintWriter;
 import org.json.JSONArray;
-import java.io.FileReader;
 
 public class SaveData extends Thread {
     private JSONObject results;
@@ -20,15 +22,23 @@ public class SaveData extends Thread {
         this.name = name;
     }
     private void createJSONObject() {
+        File file = new File(MainMenu.path);
+        try {
+            file.createNewFile();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
         results = new JSONObject();
         array = new JSONArray();
         results.put(MainMenu.KEY_RESULTS, array);
     }
     private void startRecord() {
         try {
-            results = (JSONObject) (new JSONParser().parse(new FileReader(MainMenu.path)));
+            InputStream inputStream = new FileInputStream(MainMenu.path);
+            JSONTokener jsonTokener = new JSONTokener(inputStream);
+            results = new JSONObject(jsonTokener);
             array = results.getJSONArray(MainMenu.KEY_RESULTS);
-        } catch(IOException | ParseException e) {
+        } catch(IOException e) {
             e.printStackTrace();
             createJSONObject();
         }
@@ -42,6 +52,8 @@ public class SaveData extends Thread {
         results.put(MainMenu.KEY_RESULTS, array);
         try {
             printWriter = new PrintWriter(MainMenu.path, StandardCharsets.UTF_8);
+            printWriter.write(results.toString());
+            printWriter.close();
         }
         catch (IOException e) {
             e.printStackTrace();
