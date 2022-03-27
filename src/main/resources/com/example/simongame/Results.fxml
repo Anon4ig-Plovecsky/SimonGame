@@ -2,10 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
-
+<?import javafx.scene.text.Font?>
 
 <StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.Results">
    <children>
@@ -35,5 +36,21 @@
             <Insets left="30.0" top="30.0" />
          </StackPane.margin>
       </Button>
+      <Label fx:id="textViewName" alignment="TOP_LEFT" prefHeight="890.0" prefWidth="1334.0" textFill="#f96b3b" StackPane.alignment="TOP_CENTER">
+         <StackPane.margin>
+            <Insets left="340.0" top="200.0" />
+         </StackPane.margin>
+         <font>
+            <Font name="Lobster Regular" size="70.0" />
+         </font>
+      </Label>
+      <Label fx:id="textViewScore" alignment="TOP_RIGHT" prefHeight="890.0" prefWidth="383.0" textFill="#ffef95" StackPane.alignment="TOP_CENTER">
+         <font>
+            <Font name="Lobster Regular" size="70.0" />
+         </font>
+         <StackPane.margin>
+            <Insets left="800.0" top="200.0" />
+         </StackPane.margin>
+      </Label>
    </children>
 </StackPane>
