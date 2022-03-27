@@ -1,7 +1,5 @@
 package com.example.simongame;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -29,9 +27,6 @@ public class SimonGame implements Initializable {
     private final int maxLength = 17;
     private final Random random = new Random();
     private Demonstration demonstration;
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
     private Score score;
     private int totalScore = 0;
     private String rsc;
@@ -229,9 +224,9 @@ public class SimonGame implements Initializable {
     public void goToMainMenu(ActionEvent event) throws IOException {
         if(demonstration != null && demonstration.isAlive())
             demonstration.interrupt();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainView.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, width, height);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainView.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.setFullScreen(true);
@@ -241,7 +236,7 @@ public class SimonGame implements Initializable {
         stage.show();
     }
     private void checkCorrectnessSubsequence(int indexButton) {
-        if(indexButton != userSubsequence.poll()) {
+        if(indexButton != Objects.requireNonNull(userSubsequence.poll())) {
             centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
             try {
                 AllButtonBlink allButtonBlink = new AllButtonBlink(rsc, greenButton, redButton,
@@ -263,15 +258,12 @@ public class SimonGame implements Initializable {
         }
     }
     private void editTextYourNameHasChanged() {
-        editTextYourName.textProperty().addListener(new ChangeListener<String>(){
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if(Objects.equals(editTextYourName.getText(), " "))
-                    editTextYourName.setText("");
-                if(editTextYourName.getText().length() >= maxLength)
-                    editTextYourName.setText(editTextYourName.getText().substring(0, maxLength));
-                saveResultButtonOnExited();
-            }
+        editTextYourName.textProperty().addListener((observableValue, s, t1) -> {
+            if(Objects.equals(editTextYourName.getText(), " "))
+                editTextYourName.setText("");
+            if(editTextYourName.getText().length() >= maxLength)
+                editTextYourName.setText(editTextYourName.getText().substring(0, maxLength));
+            saveResultButtonOnExited();
         });
     }
     @FXML

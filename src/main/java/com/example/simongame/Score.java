@@ -7,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 public class Score {
-    private final int INDENT = 40 + 75;
     private ImageView[] numberScore = new ImageView[0];
     private final StackPane stackPane;
     private final ImageView firstNumberScore;
@@ -30,6 +29,7 @@ public class Score {
             numberScore[i].setFitWidth(simonGame.getDpX(67));
             numberScore[i].setFitHeight(simonGame.getDpY(94));
             StackPane.setAlignment(numberScore[i], Pos.CENTER_RIGHT);
+            int INDENT = 40 + 75;
             StackPane.setMargin(numberScore[i],
                     new Insets(0, simonGame.getDpX(INDENT + simonGame.getDpX((i) * 67)),
                             simonGame.getDpY(160), 0));

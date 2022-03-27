@@ -1,22 +1,17 @@
 package com.example.simongame;
 
-import org.json.JSONTokener;
-import org.json.simple.parser.ParseException;
-import org.json.simple.parser.JSONParser;
-
-import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-
+import org.json.JSONTokener;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import java.util.*;
+import java.io.*;
 
 public class SaveData extends Thread {
     private JSONObject results;
     private JSONArray array;
     private final int totalScore;
     private final String name;
-    private PrintWriter printWriter;
     public SaveData(int totalScore, String name) {
         this.totalScore = totalScore;
         this.name = name;
@@ -24,7 +19,8 @@ public class SaveData extends Thread {
     private void createJSONObject() {
         File file = new File(MainMenu.path);
         try {
-            file.createNewFile();
+            if(file.createNewFile())
+                throw new IOException("Can't create file");
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -46,12 +42,18 @@ public class SaveData extends Thread {
         currentResult.put(MainMenu.KEY_NAME, name);
         currentResult.put(MainMenu.KEY_SCORE, totalScore);
         array.put(currentResult);
-        if(array.length() >= 10) {
-
-        }
+        List<JSONObject> listArray = new ArrayList<>();
+        for(int i = 0; i < array.length(); i++)
+            listArray.add(array.getJSONObject(i));
+        listArray.sort(new Sorting());
+        array = new JSONArray();
+        for (JSONObject jsonObject : listArray)
+            array.put(jsonObject);
         results.put(MainMenu.KEY_RESULTS, array);
+        if(array.length() >= 10)
+            array.remove(10);
         try {
-            printWriter = new PrintWriter(MainMenu.path, StandardCharsets.UTF_8);
+            PrintWriter printWriter = new PrintWriter(MainMenu.path, StandardCharsets.UTF_8);
             printWriter.write(results.toString());
             printWriter.close();
         }
@@ -63,5 +65,11 @@ public class SaveData extends Thread {
     public void run() {
         super.run();
         startRecord();
+    }
+}
+class Sorting implements Comparator<JSONObject> {
+    @Override
+    public int compare(JSONObject o1, JSONObject o2) {
+        return o2.getInt(MainMenu.KEY_SCORE) - o1.getInt(MainMenu.KEY_SCORE);
     }
 }

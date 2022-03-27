@@ -2,6 +2,7 @@ package com.example.simongame;
 
 import javafx.scene.input.KeyCombination;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import java.util.ResourceBundle;
@@ -26,6 +27,8 @@ public class MainMenu implements Initializable {
     static public String KEY_SCORE = "score";
     private String sPathResource;
     @FXML
+    private ImageView resultsButton;
+    @FXML
     private ImageView newGameButtonImageView;
     @FXML
     private ImageView exitButtonImageView;
@@ -39,11 +42,17 @@ public class MainMenu implements Initializable {
     private ImageView logoGame;
     @FXML
     protected ImageView backgroundMenu;
+    @FXML
+    private Button newGameButton;
+    @FXML
+    private Button resultsBtn;
+    private boolean haveResults = false;
     int height = (int)Screen.getPrimary().getBounds().getHeight();
     int width = (int)Screen.getPrimary().getBounds().getWidth();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showMenu();
+        checkResults();
     }
     void settingBackgroundMenu() {
         backgroundMenu.setFitWidth(width);
@@ -51,13 +60,24 @@ public class MainMenu implements Initializable {
         logoGame.setFitWidth(width);
         logoGame.setFitHeight(height);
     }
-    void showMenu() {
+    private void checkResults() {
+        File file = new File(MainMenu.path);
+        haveResults = file.exists();
+        resultsButtonOnExited();
+    }
+    private void showMenu() {
         sPathResource = new File("src/main/resources/").getAbsolutePath();
         settingBackgroundMenu();
     }
     @FXML
-    protected void newGameButtonOnPressed(ActionEvent event) throws IOException {
-        String name = "SimonGame.fxml";
+    private void goToNextScene(ActionEvent event) throws IOException {
+        String name = "";
+        Object source = event.getSource();
+        if (newGameButton.equals(source)) {
+            name = "SimonGame.fxml";
+        } else if (resultsBtn.equals(source)) {
+            name = "Results.fxml";
+        }
         String css = Paths.get("./src/main/java/com/example/simongame/TextConfigurations.css").toAbsolutePath().toUri().toString();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(name));
         root = fxmlLoader.load();
@@ -71,6 +91,28 @@ public class MainMenu implements Initializable {
         stage.setFullScreen(true);
         stage.setResizable(false);
         stage.show();
+    }
+    @FXML
+    private void resultsButtonOnEntered() {
+        if(haveResults)
+            resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonRelease.png"));
+    }
+    @FXML
+    private void resultsButtonOnExited() {
+        if(haveResults)
+            resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonDefault.png"));
+    }
+    @FXML
+    private void resultsButtonOnPressed() {
+        if(haveResults) {
+            resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonPressed.png"));
+            PlaySound.play(Sounds.PLAY_TAP);
+        }
+    }
+    @FXML
+    private void resultsButtonOnReleased() {
+        if(haveResults)
+            resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonRelease.png"));
     }
     @FXML
     protected void newGameButtonNotPointed() {
