@@ -228,6 +228,7 @@ public class SimonGame implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
+        stage.getIcons().add(new Image(MainApplication.iconPath));
         stage.setMaximized(true);
         stage.setFullScreen(true);
         stage.setResizable(false);

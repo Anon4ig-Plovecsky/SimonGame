@@ -84,6 +84,7 @@ public class MainMenu implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, width, height);
         scene.getStylesheets().add(css);
+        stage.getIcons().add(new Image(MainApplication.iconPath));
         stage.setScene(scene);
         stage.setFullScreenExitHint("");
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);

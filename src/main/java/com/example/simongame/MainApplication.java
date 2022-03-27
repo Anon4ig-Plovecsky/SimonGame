@@ -1,5 +1,6 @@
 package com.example.simongame;
 
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.application.Application;
 import javafx.scene.text.Font;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainApplication extends Application {
+    public static final String iconPath = Paths.get("/src/main/resources/SimonGame.png").toAbsolutePath().toUri().toString();
     int width = (int)Screen.getPrimary().getBounds().getWidth();
     int height = (int)Screen.getPrimary().getBounds().getHeight();
     @Override
@@ -27,6 +29,7 @@ public class MainApplication extends Application {
         stage.setFullScreenExitHint("");
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(scene);
+        stage.getIcons().add(new Image(MainApplication.iconPath));
         stage.show();
     }
     public static void main(String[] args) {

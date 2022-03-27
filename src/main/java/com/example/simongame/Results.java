@@ -1,29 +1,26 @@
 package com.example.simongame;
 
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.text.Font;
+import org.json.JSONTokener;
 import javafx.stage.Screen;
-
-import java.io.*;
-
 import javafx.scene.Parent;
+import org.json.JSONObject;
+import org.json.JSONArray;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.fxml.FXML;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+import java.io.*;
 
 public class Results {
-    private final int SPACE = 45;
     private String path;
     @FXML
     private ImageView backgroundImage;
@@ -102,6 +99,7 @@ public class Results {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
+        stage.getIcons().add(new Image(MainApplication.iconPath));
         stage.setFullScreenExitHint("");
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setMaximized(true);
