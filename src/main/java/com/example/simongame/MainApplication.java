@@ -1,8 +1,8 @@
 package com.example.simongame;
 
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
