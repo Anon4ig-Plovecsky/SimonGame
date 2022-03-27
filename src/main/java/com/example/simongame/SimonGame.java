@@ -156,7 +156,8 @@ public class SimonGame implements Initializable {
         editTextYourName.setMinHeight(getDpY(105));
         editTextYourName.setMaxHeight(getDpY(105));
         editTextYourName.setPrefHeight(getDpY(105));
-        editTextYourName.setFont(new Font("Lobster Regular", getDpY(50)));
+        Font font = Font.loadFont("file:src/main/resources/Lobster-Regular.ttf", getDpY(50));
+        editTextYourName.setFont(font);
         StackPane.setMargin(editTextYourName, new Insets(0, getDpX(15), getDpY(200), 0));
     }
     private void setFirstNumberScore() {

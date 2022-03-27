@@ -3,7 +3,6 @@ package com.example.simongame;
 import javafx.scene.input.KeyCombination;
 import javafx.application.Application;
 import javafx.scene.image.Image;
-import javafx.scene.text.Font;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -18,7 +17,6 @@ public class MainApplication extends Application {
     int height = (int)Screen.getPrimary().getBounds().getHeight();
     @Override
     public void start(Stage stage) throws IOException {
-        Font.loadFont(Paths.get("./src/main/java/resources/Lobster-Regular.ttf").toAbsolutePath().toUri().toString(), 50);
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MainView.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, width, height);
