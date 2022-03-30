@@ -45,7 +45,7 @@ public class SimonGame implements Initializable {
     @FXML
     private ImageView background;
     @FXML
-    private ImageView centerButton;
+    public ImageView centerButton;
     @FXML
     private ImageView body;
     @FXML
@@ -70,10 +70,10 @@ public class SimonGame implements Initializable {
     private Button centerBtn;
     @FXML
     private Button mainMenuBtn;
-    Queue<Integer> trueSubsequence = new LinkedList<>();
-    Queue<Integer> userSubsequence = new LinkedList<>();
-    boolean record = false;
-    boolean playersTurn = false;
+    public Queue<Integer> trueSubsequence = new LinkedList<>();
+    public Queue<Integer> userSubsequence = new LinkedList<>();
+    private boolean record = false;
+    public boolean playersTurn = false;
     private final double width = (int)Screen.getPrimary().getBounds().getWidth();
     private final double height = (int)Screen.getPrimary().getBounds().getHeight();
     private final double trueWidth = width / 1800.0;
@@ -237,8 +237,8 @@ public class SimonGame implements Initializable {
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.show();
     }
-    private void checkCorrectnessSubsequence(int indexButton) {
-        if(indexButton != Objects.requireNonNull(userSubsequence.poll())) {
+    public void checkCorrectnessSubsequence(int indexButton) {
+        if(!areEqual(indexButton, Objects.requireNonNull(userSubsequence.poll()))) {
             centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
             try {
                 AllButtonBlink allButtonBlink = new AllButtonBlink(rsc, greenButton, redButton,
@@ -400,5 +400,8 @@ public class SimonGame implements Initializable {
     }
     double getDpY(double px) {
         return px * trueHeight;
+    }
+    public static boolean areEqual(int firstNumber, int secondNumber) {
+        return firstNumber == secondNumber;
     }
 }

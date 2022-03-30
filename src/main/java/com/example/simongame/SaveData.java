@@ -28,7 +28,7 @@ public class SaveData extends Thread {
         array = new JSONArray();
         results.put(MainMenu.KEY_RESULTS, array);
     }
-    private void startRecord() {
+    public void startRecord() {
         try {
             InputStream inputStream = new FileInputStream(MainMenu.path);
             JSONTokener jsonTokener = new JSONTokener(inputStream);
