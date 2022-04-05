@@ -1,5 +1,7 @@
 package com.example.simongame;
 
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import javafx.scene.input.KeyCombination;
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -29,6 +31,12 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.getIcons().add(new Image(MainApplication.iconPath));
         stage.show();
+    }
+    private ConfigurableApplicationContext bootstrapSpringApplicationContext() {
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(MainApplication.class);
+        String[] args = getParameters().getRaw().toArray(String[]::new);
+        builder.headless(false);
+        return builder.run(args);
     }
     public static void main(String[] args) {
         launch();

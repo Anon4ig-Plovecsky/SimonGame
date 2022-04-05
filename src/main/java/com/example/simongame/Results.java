@@ -56,14 +56,14 @@ public class Results {
         textViewScore.setText(currentTextScore);
     }
     private void setTextView() {
-        Font font = Font.loadFont("file:src/main/resources/Lobster-Regular.ttf", getDpY(70));
+        Font font = Font.loadFont("file:src/main/resources/Lobster-Regular.ttf", getDpY(65));
         textViewName.setPrefWidth(getDpX(1333));
         textViewName.setPrefHeight(getDpY(890));
-        StackPane.setMargin(textViewName, new Insets(getDpY(200), 0, 0, getDpX(340)));
+        StackPane.setMargin(textViewName, new Insets(getDpY(170), 0, 0, getDpX(340)));
         textViewName.setFont(font);
         textViewScore.setPrefHeight(getDpY(890));
         textViewScore.setPrefWidth(getDpX(383));
-        StackPane.setMargin(textViewScore, new Insets(getDpY(200), 0, 0, getDpX(800)));
+        StackPane.setMargin(textViewScore, new Insets(getDpY(170), 0, 0, getDpX(800)));
         textViewScore.setFont(font);
         JSONObject results = new JSONObject();
         try {

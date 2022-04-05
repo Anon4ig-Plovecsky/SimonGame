@@ -1,5 +1,6 @@
 package com.example.simongame;
 
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -30,6 +31,8 @@ public class SimonGame implements Initializable {
     private Score score;
     private int totalScore = 0;
     private String rsc;
+    @FXML
+    private Label trueSubsequenceLabel;
     @FXML
     private Button saveResultBtn;
     @FXML
@@ -119,11 +122,14 @@ public class SimonGame implements Initializable {
     }
     public void continueDemonstration() {
         allButtonsDisable();
+        StringBuilder stringSubsequence= new StringBuilder();
         trueSubsequence = addSubsequence();
         userSubsequence = new LinkedList<>();
         for (Integer integer : trueSubsequence) {
             userSubsequence.offer(integer);
+            stringSubsequence.append(integer.toString()).append(" ");
         }
+        trueSubsequenceLabel.setText(stringSubsequence.toString());
         demonstration = new Demonstration(rsc, greenButton, redButton, blueButton, yellowButton,
                 trueSubsequence);
         demonstration.start();
