@@ -19,27 +19,32 @@ class SaveDataTests {
     @BeforeEach
     void setUp() throws IOException {
         file = new File(MainMenu.path);
-        boolean succesDeleteFile = file.delete();
+        file.deleteOnExit();
+        boolean success = file.delete();
     }
     @ParameterizedTest
     @MethodSource("resultFromGame")
-    public void saveDataTest(String name, int score) throws FileNotFoundException {
+    public void saveDataTest(String name, int score) throws IOException {
         boolean actual;
         boolean expected = true;
         SaveData saveData = new SaveData(score, name);
         saveData.startRecord();
-        JSONObject fileResult = (new JSONObject(new JSONTokener(new FileInputStream(file)))).getJSONArray(MainMenu.KEY_RESULTS).getJSONObject(0);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        JSONObject fileResult = (new JSONObject(new JSONTokener(fileInputStream))).getJSONArray(MainMenu.KEY_RESULTS).getJSONObject(0);
+        fileInputStream.close();
         actual = fileResult.getString(MainMenu.KEY_NAME).equals(name) && fileResult.getInt(MainMenu.KEY_SCORE) == score;
         Assertions.assertEquals(expected, actual);
     }
     @ParameterizedTest
     @MethodSource("resultsFromSomeGames")
-    public void checkSortingResults(String[] names, int[] scores, int[] expectedScores) throws FileNotFoundException {
+    public void checkSortingResults(String[] names, int[] scores, int[] expectedScores) throws IOException {
         for(int count = 0; count < names.length; count++) {
             SaveData saveData = new SaveData(scores[count], names[count]);
             saveData.startRecord();
         }
-        JSONArray arrayResults = (new JSONObject(new JSONTokener(new FileInputStream(file)))).getJSONArray(MainMenu.KEY_RESULTS);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        JSONArray arrayResults = (new JSONObject(new JSONTokener(fileInputStream))).getJSONArray(MainMenu.KEY_RESULTS);
+        fileInputStream.close();
         int[] actualScores = new int[arrayResults.length()];
         for(int count = 0; count < arrayResults.length(); count++)
             actualScores[count] = arrayResults.getJSONObject(count).getInt(MainMenu.KEY_SCORE);
@@ -47,7 +52,8 @@ class SaveDataTests {
     }
     @AfterEach
     void tearDown() {
-        boolean succesDeleteFile = file.delete();
+        file.deleteOnExit();
+        boolean success = file.delete();
     }
     private static Stream<Arguments> resultFromGame() {
         return Stream.of(

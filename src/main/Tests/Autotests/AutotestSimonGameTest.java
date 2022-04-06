@@ -12,17 +12,16 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxToolkit;
+import java.io.FileInputStream;
 import org.json.JSONTokener;
 import org.json.JSONObject;
 import java.nio.file.Paths;
-import java.io.FileReader;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.File;
 
-public class SimonGameMainTest extends ApplicationTest {
+public class AutotestSimonGameTest extends ApplicationTest {
     private final String KEY_NEW_GAME_BUTTON = "#newGameButton";
     private final String KEY_CENTER_BUTTON = "#centerBtn";
     private final String KEY_TRUE_SUBSEQUENCE = "#trueSubsequenceLabel";
@@ -34,6 +33,7 @@ public class SimonGameMainTest extends ApplicationTest {
     private final String KEY_SCORE_IMAGE = "#firstNumberScore";
     private final String KEY_EDIT_TEXT = "#editTextYourName";
     private final String KEY_MAIN_MENU = "#mainMenuBtn";
+    private final String KEY_MAIN_MENU_RESULT = "#MainMenu";
     private final String KEY_RESULT_BUTTON = "#resultsBtn";
     @Override
     public void start(Stage stage) throws Exception {
@@ -48,6 +48,7 @@ public class SimonGameMainTest extends ApplicationTest {
         FxToolkit.hideStage();
         release(new KeyCode[]{});
         release(new MouseButton[]{});
+        press(KeyCode.ESCAPE); release(KeyCode.ESCAPE);
     }
     @Test
     public void getNewScore() throws Exception {
@@ -63,14 +64,16 @@ public class SimonGameMainTest extends ApplicationTest {
                 pressXButton(Integer.parseInt(button));
         }
         ImageView score = find(KEY_SCORE_IMAGE);
-        String pathToFiveScore = "file:" + Paths.get("src/main/resources/Image/Simon/Numbers/Five.png").toAbsolutePath().toString();
-        String actualPathScore = Paths.get(score.getImage().getUrl()).toString();
+        String pathToFiveScore = Paths.get("src/main/resources/Image/Simon/Numbers/Five.png").toAbsolutePath().toString();
+        String url = score.getImage().getUrl();
+        url = url.substring(5);
+        String actualPathScore = Paths.get(url).toString();
         Assertions.assertEquals(pathToFiveScore, actualPathScore);
+        dropTo(KEY_MAIN_MENU);
+        clickOn(KEY_MAIN_MENU);
     }
     @Test
     public void saveResult() throws Exception {
-        File file = new File(MainMenu.path);
-        boolean succesDeleteFile = file.delete();
         dropTo(KEY_NEW_GAME_BUTTON);
         clickOn(KEY_NEW_GAME_BUTTON);
         dropTo(KEY_CENTER_BUTTON);
@@ -98,10 +101,14 @@ public class SimonGameMainTest extends ApplicationTest {
         Map<String, Integer> expected = new HashMap<>();
         expected.put("Antony", 1);
         Map<String, Integer> actual = new HashMap<>();
-        JSONObject result = (new JSONObject(new JSONTokener(new FileReader(file)))).getJSONArray(MainMenu.KEY_RESULTS).getJSONObject(0);
+        FileInputStream fileInputStream = new FileInputStream(MainMenu.path);
+        JSONObject result = (new JSONObject(new JSONTokener(fileInputStream))).getJSONArray(MainMenu.KEY_RESULTS).getJSONObject(0);
+        fileInputStream.close();
         actual.put(result.getString(MainMenu.KEY_NAME), result.getInt(MainMenu.KEY_SCORE));
+        press(KeyCode.ESCAPE); release(KeyCode.ESCAPE);
+        dropTo(KEY_MAIN_MENU_RESULT);
+        clickOn(KEY_MAIN_MENU_RESULT);
         Assertions.assertEquals(expected, actual);
-        Thread.sleep(2000);
     }
     private void pressXButton(int index) throws Exception {
         String idButton = "";

@@ -21,7 +21,7 @@ import java.net.URL;
 import java.io.File;
 
 public class MainMenu implements Initializable {
-    static public String path = "./src/main/resources/Save.json";
+    static public String path = "src/main/resources/Save.json";
     static public String KEY_RESULTS = "results";
     static public String KEY_NAME = "name";
     static public String KEY_SCORE = "score";

@@ -34,6 +34,7 @@ public class SaveData extends Thread {
             JSONTokener jsonTokener = new JSONTokener(inputStream);
             results = new JSONObject(jsonTokener);
             array = results.getJSONArray(MainMenu.KEY_RESULTS);
+            inputStream.close();
         } catch(IOException e) {
             e.printStackTrace();
             createJSONObject();
