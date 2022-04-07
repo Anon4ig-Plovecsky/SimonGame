@@ -1,0 +1,1 @@
+Чтобы установить данную игру, перейдите по ссылке https://github.com/Anon4ig-Plovecsky/SimonGame/releases и выберите последнюю версию игры для вашей платформы: Windows или Linux. Скачайте zip-архив, распакуйте его в нужную папку/директорию и запустите "Simon Game.jar" для Linux и "Simon Game.exe" для Windows. Приятной игры!
