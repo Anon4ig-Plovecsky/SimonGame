@@ -1,6 +1,7 @@
 package com.example.simongame;
 
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
@@ -23,15 +24,9 @@ import java.io.*;
 public class Results {
     private String path;
     @FXML
-    private ImageView backgroundImage;
+    private ImageView backgroundImage, mainMenuButton, resultsText;
     @FXML
-    private ImageView mainMenuButton;
-    @FXML
-    private ImageView resultsText;
-    @FXML
-    private Label textViewName;
-    @FXML
-    private Label textViewScore;
+    private Label textViewName, textViewScore;
     private final double width = Screen.getPrimary().getBounds().getWidth();
     private final double height = Screen.getPrimary().getBounds().getHeight();
     private final double ratioWidth = width / 1800.0;
@@ -108,21 +103,16 @@ public class Results {
         stage.show();
     }
     @FXML
-    private void mainMenuButtonOnEntered() {
-        mainMenuButton.setImage(new Image("file:" + path + "/Image/Results/MainMenuButton/MainMenuButtonRelease.png"));
-    }
-    @FXML
-    private void mainMenuButtonOnExited() {
-        mainMenuButton.setImage(new Image("file:" + path + "/Image/Results/MainMenuButton/MainMenuButtonDefault.png"));
-    }
-    @FXML
-    private void mainMenuButtonOnPressed() {
-        mainMenuButton.setImage(new Image("file:" + path + "/Image/Results/MainMenuButton/MainMenuButtonPressed.png"));
-        PlaySound.play(Sounds.PLAY_TAP);
-    }
-    @FXML
-    private void mainMenuButtonOnReleased() {
-        mainMenuButton.setImage(new Image("file:" + path + "/Image/Results/MainMenuButton/MainMenuButtonRelease.png"));
+    private void mainMenuEvent(MouseEvent event) {
+        switch (event.getEventType().toString()) {
+            case "MOUSE_RELEASED", "MOUSE_ENTERED" ->
+                    mainMenuButton.setImage(new Image("file:" + path + "/Image/Results/MainMenuButton/MainMenuButtonRelease.png"));
+            case "MOUSE_PRESSED" -> {
+                mainMenuButton.setImage(new Image("file:" + path + "/Image/Results/MainMenuButton/MainMenuButtonPressed.png"));
+                PlaySound.play(Sounds.PLAY_TAP);
+            }
+            case "MOUSE_EXITED" -> mainMenuButton.setImage(new Image("file:" + path + "/Image/Results/MainMenuButton/MainMenuButtonDefault.png"));
+        }
     }
     private double getDpX(double px) {
         return px * ratioWidth;

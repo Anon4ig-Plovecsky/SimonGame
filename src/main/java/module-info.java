@@ -13,6 +13,7 @@ module com.example.simongame {
     requires org.json;
     requires spring.context;
     requires spring.boot;
+    requires javafx.graphics;
 
     opens com.example.simongame to javafx.fxml;
     exports com.example.simongame;

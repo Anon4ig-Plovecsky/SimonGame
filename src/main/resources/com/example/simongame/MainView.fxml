@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="stackPaneMainMenu" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.MainMenu">
+<StackPane fx:id="stackPaneMainMenu" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.MainMenu">
    <children>
       <ImageView id="background" fx:id="backgroundMenu" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="CENTER">
          <image>
@@ -54,9 +54,9 @@
       </ImageView>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="newGameButton" layoutX="1516.0" layoutY="924.0" mnemonicParsing="false" onAction="#goToNextScene" onMouseEntered="#newGameButtonOnPointed" onMouseExited="#newGameButtonNotPointed" onMousePressed="#newGameButtonPressed" onMouseReleased="#NewGameButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="402.0" text="New Game" AnchorPane.bottomAnchor="373.0" AnchorPane.rightAnchor="106.0" />
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonOnPressed" onMouseEntered="#exitButtonOnPointed" onMouseExited="#exitButtonNotPointed" onMousePressed="#exitButtonPressed" onMouseReleased="#exitButtonReleased" opacity="0.0" prefHeight="108.0" prefWidth="227.0" text="Exit" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="193.0" />
-            <Button fx:id="resultsBtn" mnemonicParsing="false" onAction="#goToNextScene" onMouseEntered="#resultsButtonOnEntered" onMouseExited="#resultsButtonOnExited" onMousePressed="#resultsButtonOnPressed" onMouseReleased="#resultsButtonOnReleased" opacity="0.0" prefHeight="109.0" prefWidth="443.0" text="Results" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="83.0" />
+            <Button fx:id="newGameButton" layoutX="1516.0" layoutY="924.0" mnemonicParsing="false" onAction="#buttonPressed" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" onMousePressed="#mousePressed" onMouseReleased="#mouseReleased" opacity="0.0" prefHeight="108.0" prefWidth="402.0" text="New Game" AnchorPane.bottomAnchor="373.0" AnchorPane.rightAnchor="106.0" />
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#buttonPressed" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" onMousePressed="#mousePressed" onMouseReleased="#mouseReleased" opacity="0.0" prefHeight="108.0" prefWidth="227.0" text="Exit" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="193.0" />
+            <Button fx:id="resultsBtn" mnemonicParsing="false" onAction="#goToNextScene" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" onMousePressed="#mousePressed" onMouseReleased="#mouseReleased" opacity="0.0" prefHeight="109.0" prefWidth="443.0" text="Results" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="83.0" />
          </children>
       </AnchorPane>
    </children>

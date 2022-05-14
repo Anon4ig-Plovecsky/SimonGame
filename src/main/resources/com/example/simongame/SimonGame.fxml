@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" alignment="TOP_LEFT" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.SimonGame">
+<StackPane fx:id="stackPane" alignment="TOP_LEFT" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.simongame.SimonGame">
    <Label fx:id="trueSubsequenceLabel" opacity="0.0" text="ForTestFX" StackPane.alignment="TOP_LEFT" />
      <ImageView fx:id="background" pickOnBounds="true">
         <image>
@@ -21,7 +21,7 @@
            <Rectangle2D />
         </viewport>
      </ImageView>
-   <ImageView fx:id="mainMenuButton" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
+   <ImageView fx:id="mainMenuButtonImage" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
       <image>
          <Image url="@../../../Image/Simon/MainMenuButton/ButtonMenuDefault.png" />
       </image>
@@ -53,12 +53,12 @@
          <Image url="@../../../Image/Simon/Numbers/Zero.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="centerButton" pickOnBounds="true" StackPane.alignment="CENTER">
+   <ImageView fx:id="centerButtonImage" pickOnBounds="true" StackPane.alignment="CENTER">
       <image>
          <Image url="@../../../Image/Simon/CenterButton/CenterButtonDefault.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="saveResultButton" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_RIGHT">
+   <ImageView fx:id="saveResultButtonImage" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_RIGHT">
       <StackPane.margin>
          <Insets bottom="30.0" right="5.0" />
       </StackPane.margin>
@@ -68,7 +68,7 @@
    </ImageView>
    <Pane nodeOrientation="LEFT_TO_RIGHT" StackPane.alignment="TOP_LEFT">
       <children>
-         <ImageView fx:id="yellowButton" layoutX="402.0" layoutY="594.0" pickOnBounds="true" StackPane.alignment="CENTER">
+         <ImageView fx:id="yellowButtonImage" layoutX="402.0" layoutY="594.0" pickOnBounds="true" StackPane.alignment="CENTER">
             <image>
                <Image url="@../../../Image/Simon/Yellow/YellowDefault.png" />
             </image>
@@ -79,33 +79,33 @@
                <Rectangle2D />
             </viewport>
          </ImageView>
-         <ImageView fx:id="greenButton" layoutX="399.0" layoutY="67.0" pickOnBounds="true">
+         <ImageView fx:id="greenButtonImage" layoutX="399.0" layoutY="67.0" pickOnBounds="true">
             <image>
                <Image url="@../../../Image/Simon/Green/GreenDefault.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="redButton" layoutX="930.0" layoutY="72.0" pickOnBounds="true">
+         <ImageView fx:id="redButtonImage" layoutX="930.0" layoutY="72.0" pickOnBounds="true">
             <image>
                <Image url="@../../../Image/Simon/Red/RedDefault.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="blueButton" layoutX="924.0" layoutY="594.0" pickOnBounds="true">
+         <ImageView fx:id="blueButtonImage" layoutX="924.0" layoutY="594.0" pickOnBounds="true">
             <image>
                <Image url="@../../../Image/Simon/Blue/BlueDefault.png" />
             </image>
          </ImageView>
-         <Button fx:id="greenBtn" layoutX="429.0" layoutY="194.0" mnemonicParsing="false" onAction="#greenColorSelected" onMousePressed="#greenButtonOnPressed" onMouseReleased="#greenButtonOnReleased" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="-45.0" text="Green" />
-         <Button fx:id="redBtn" layoutX="935.0" layoutY="194.0" mnemonicParsing="false" onAction="#redColorSelected" onMousePressed="#redButtonOnPressed" onMouseReleased="#redButtonOnReleased" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="45.0" text="Red" />
-         <Button fx:id="yellowBtn" layoutX="429.0" layoutY="689.0" mnemonicParsing="false" onAction="#yellowColorSelected" onMousePressed="#yellowButtonOnPressed" onMouseReleased="#yellowButtonOnReleased" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="-135.0" text="Yellow" />
-         <Button fx:id="blueBtn" layoutX="935.0" layoutY="689.0" mnemonicParsing="false" onAction="#blueColorSelected" onMousePressed="#blueButtonOnPressed" onMouseReleased="#blueButtonOnReleased" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="135.0" text="Blue" />
+         <Button fx:id="greenButton" layoutX="429.0" layoutY="194.0" mnemonicParsing="false" onAction="#gameButtonPressed" onMousePressed="#gameButtonMouseEvent" onMouseReleased="#gameButtonMouseEvent" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="-45.0" text="Green" />
+         <Button fx:id="redButton" layoutX="935.0" layoutY="194.0" mnemonicParsing="false" onAction="#gameButtonPressed" onMousePressed="#gameButtonMouseEvent" onMouseReleased="#gameButtonMouseEvent" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="45.0" text="Red" />
+         <Button fx:id="yellowButton" layoutX="429.0" layoutY="689.0" mnemonicParsing="false" onAction="#gameButtonPressed" onMousePressed="#gameButtonMouseEvent" onMouseReleased="#gameButtonMouseEvent" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="-135.0" text="Yellow" />
+         <Button fx:id="blueButton" layoutX="935.0" layoutY="689.0" mnemonicParsing="false" onAction="#gameButtonPressed" onMousePressed="#gameButtonMouseEvent" onMouseReleased="#gameButtonMouseEvent" opacity="0.0" prefHeight="238.0" prefWidth="438.0" rotate="135.0" text="Blue" />
       </children>
    </Pane>
-   <Button fx:id="mainMenuBtn" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#goToMainMenu" onMouseEntered="#mainMenuButtonOnEntered" onMouseExited="#mainMenuButtonOnExited" onMousePressed="#mainMenuButtonOnPressed" onMouseReleased="#mainMenuButtonOnReleased" opacity="0.0" prefHeight="150.0" prefWidth="336.0" text="MainMenu" StackPane.alignment="TOP_RIGHT">
+   <Button fx:id="mainMenuButton" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#goToMainMenu" onMouseEntered="#functionButtonMouseEvent" onMouseExited="#functionButtonMouseEvent" onMousePressed="#functionButtonMouseEvent" onMouseReleased="#functionButtonMouseEvent" opacity="0.0" prefHeight="150.0" prefWidth="336.0" text="MainMenuButton" StackPane.alignment="TOP_RIGHT">
       <StackPane.margin>
          <Insets right="20.0" top="20.0" />
       </StackPane.margin>
    </Button>
-   <Button fx:id="centerBtn" mnemonicParsing="false" onAction="#gameRun" onMousePressed="#centerButtonOnPressed" onMouseReleased="#centerButtonOnReleased" opacity="0.0" prefHeight="232.0" prefWidth="257.0" text="CenterBtn" StackPane.alignment="CENTER" />
+   <Button fx:id="centerButton" mnemonicParsing="false" onAction="#gameRun" onMousePressed="#functionButtonMouseEvent" onMouseReleased="#functionButtonMouseEvent" opacity="0.0" prefHeight="232.0" prefWidth="257.0" text="CenterButton" StackPane.alignment="CENTER" />
    <TextField fx:id="editTextYourName" alignment="CENTER" maxWidth="466.0" minHeight="105.0" minWidth="465.0" prefHeight="105.0" prefWidth="466.0" promptText="Введите ваше имя" StackPane.alignment="BOTTOM_RIGHT">
       <font>
          <Font name="Lobster Regular" size="50.0" />
@@ -114,7 +114,7 @@
          <Insets bottom="200.0" right="15.0" />
       </StackPane.margin>
    </TextField>
-   <Button fx:id="saveResultBtn" mnemonicParsing="false" onAction="#beginSaveResult" onMouseEntered="#saveResultButtonOnEntered" onMouseExited="#saveResultButtonOnExited" onMousePressed="#saveResultButtonOnPressed" onMouseReleased="#saveResultButtonOnReleased" opacity="0.0" prefHeight="150.0" prefWidth="559.0" text="SaveButton" StackPane.alignment="BOTTOM_RIGHT">
+   <Button fx:id="saveResultButton" mnemonicParsing="false" onAction="#beginSaveResult" onMouseEntered="#functionButtonMouseEvent" onMouseExited="#functionButtonMouseEvent" onMousePressed="#functionButtonMouseEvent" onMouseReleased="#functionButtonMouseEvent" opacity="0.0" prefHeight="150.0" prefWidth="559.0" text="SaveButton" StackPane.alignment="BOTTOM_RIGHT">
       <StackPane.margin>
          <Insets bottom="30.0" right="5.0" />
       </StackPane.margin>

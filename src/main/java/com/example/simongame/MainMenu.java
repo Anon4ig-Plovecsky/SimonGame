@@ -1,6 +1,7 @@
 package com.example.simongame;
 
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.application.Platform;
@@ -27,28 +28,16 @@ public class MainMenu implements Initializable {
     static public String KEY_SCORE = "score";
     private String sPathResource;
     @FXML
-    private ImageView resultsButton;
+    protected ImageView backgroundMenu;
     @FXML
-    private ImageView newGameButtonImageView;
-    @FXML
-    private ImageView exitButtonImageView;
-    @FXML
-    private Stage stage;
-    @FXML
-    private Scene scene;
-    @FXML
-    private Parent root;
+    private ImageView resultsButton, newGameButtonImageView, exitButtonImageView;
     @FXML
     private ImageView logoGame;
     @FXML
-    protected ImageView backgroundMenu;
-    @FXML
-    private Button newGameButton;
-    @FXML
-    private Button resultsBtn;
+    private Button newGameButton, resultsBtn;
     private boolean haveResults = false;
-    int height = (int)Screen.getPrimary().getBounds().getHeight();
-    int width = (int)Screen.getPrimary().getBounds().getWidth();
+    private final int height = (int)Screen.getPrimary().getBounds().getHeight();
+    private final int width = (int)Screen.getPrimary().getBounds().getWidth();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showMenu();
@@ -63,7 +52,7 @@ public class MainMenu implements Initializable {
     private void checkResults() {
         File file = new File(MainMenu.path);
         haveResults = file.exists();
-        resultsButtonOnExited();
+        resultsDefaultImage();
     }
     private void showMenu() {
         sPathResource = new File("src/main/resources/").getAbsolutePath();
@@ -80,9 +69,9 @@ public class MainMenu implements Initializable {
         }
         String css = Paths.get("./src/main/java/com/example/simongame/TextConfigurations.css").toAbsolutePath().toUri().toString();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(name));
-        root = fxmlLoader.load();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, width, height);
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, width, height);
         scene.getStylesheets().add(css);
         stage.getIcons().add(new Image(MainApplication.iconPath));
         stage.setScene(scene);
@@ -94,67 +83,69 @@ public class MainMenu implements Initializable {
         stage.show();
     }
     @FXML
-    private void resultsButtonOnEntered() {
-        if(haveResults)
-            resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonRelease.png"));
+    private void buttonPressed(ActionEvent event) throws IOException {
+        switch(((Button)event.getSource()).getId()) {
+            case "newGameButton", "resultsBtn" -> goToNextScene(event);
+            case "exitButton" -> Platform.exit();
+        }
     }
     @FXML
-    private void resultsButtonOnExited() {
+    private void mouseEntered(MouseEvent event) {
+        switch(((Button)event.getSource()).getId()) {
+            case "newGameButton" ->
+                    newGameButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/NewGamePointed.png"));
+            case "resultsBtn" -> {
+                if(haveResults)
+                    resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonRelease.png"));
+            }
+            case "exitButton" ->
+                    exitButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ExitPointed.png"));
+        }
+    }
+    @FXML
+    private void mouseExited(MouseEvent event) {
+        switch(((Button)event.getSource()).getId()) {
+            case "newGameButton" ->
+                    newGameButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/NewGame.png"));
+            case "resultsBtn" -> resultsDefaultImage();
+            case "exitButton" ->
+                    exitButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/Exit.png"));
+        }
+    }
+    private void resultsDefaultImage() {
         if(haveResults)
             resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonDefault.png"));
     }
     @FXML
-    private void resultsButtonOnPressed() {
-        if(haveResults) {
-            resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonPressed.png"));
-            PlaySound.play(Sounds.PLAY_TAP);
+    private void mousePressed(MouseEvent event) {
+        switch(((Button)event.getSource()).getId()) {
+            case "newGameButton" -> {
+                PlaySound.play(Sounds.PLAY_TAP);
+                newGameButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/NewGamePressed.png"));
+            }
+            case "resultsBtn" -> {
+                if(haveResults) {
+                    resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonPressed.png"));
+                    PlaySound.play(Sounds.PLAY_TAP);
+                }
+            }
+            case "exitButton" -> {
+                PlaySound.play(Sounds.PLAY_TAP);
+                exitButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ExitPressed.png"));
+            }
         }
     }
     @FXML
-    private void resultsButtonOnReleased() {
-        if(haveResults)
-            resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonRelease.png"));
-    }
-    @FXML
-    protected void newGameButtonNotPointed() {
-        String path = "file:" + sPathResource + "/Image/MainMenu/NewGame.png";
-        Image newButton = new Image(path);
-        newGameButtonImageView.setImage(newButton);
-    }
-    @FXML
-    protected void newGameButtonOnPointed() {
-        newGameButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/NewGamePointed.png"));
-    }
-    @FXML
-    protected void newGameButtonPressed() {
-        PlaySound.play(Sounds.PLAY_TAP);
-        newGameButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/NewGamePressed.png"));
-    }
-    @FXML
-    protected void NewGameButtonReleased() {
-        newGameButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/NewGamePointed.png"));
-    }
-    @FXML
-    protected void exitButtonOnPointed() {
-        Image imageOnPointed = new Image("file:" + sPathResource + "/Image/MainMenu/ExitPointed.png");
-        exitButtonImageView.setImage(imageOnPointed);
-    }
-    @FXML
-    protected void exitButtonNotPointed() {
-        Image imageOnPointed = new Image("file:" + sPathResource + "/Image/MainMenu/Exit.png");
-        exitButtonImageView.setImage(imageOnPointed);
-    }
-    @FXML
-    protected void exitButtonReleased() {
-        exitButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ExitPointed.png"));
-    }
-    @FXML
-    protected void exitButtonPressed() {
-        PlaySound.play(Sounds.PLAY_TAP);
-        exitButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ExitPressed.png"));
-    }
-    @FXML
-    protected void exitButtonOnPressed() {
-        Platform.exit();
+    private void mouseReleased(MouseEvent event) {
+        switch(((Button)event.getSource()).getId()) {
+            case "newGameButton" ->
+                    newGameButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/NewGamePointed.png"));
+            case "resultsBtn" -> {
+                if(haveResults)
+                    resultsButton.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ResultsButtonRelease.png"));
+            }
+            case "exitButton" ->
+                    exitButtonImageView.setImage(new Image("file:" + sPathResource + "/Image/MainMenu/ExitPointed.png"));
+        }
     }
 }

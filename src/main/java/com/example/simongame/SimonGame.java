@@ -2,6 +2,7 @@ package com.example.simongame;
 
 import javafx.scene.input.KeyCombination;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
@@ -32,51 +33,21 @@ public class SimonGame implements Initializable {
     private int totalScore = 0;
     private String rsc;
     @FXML
+    private Button centerButton, greenButton, yellowButton, redButton, blueButton, mainMenuButton, saveResultButton;
+    @FXML
+    private ImageView saveResultButtonImage, mainMenuButtonImage, firstNumberScore, scoreImage, background, body;
+    @FXML
+    private ImageView centerButtonImage, yellowButtonImage, greenButtonImage, redButtonImage, blueButtonImage;
+    @FXML
     private Label trueSubsequenceLabel;
-    @FXML
-    private Button saveResultBtn;
-    @FXML
-    private ImageView saveResultButton;
     @FXML
     private TextField editTextYourName;
     @FXML
     private StackPane stackPane;
-    @FXML
-    private ImageView firstNumberScore;
-    @FXML
-    private ImageView scoreImage;
-    @FXML
-    private ImageView background;
-    @FXML
-    public ImageView centerButton;
-    @FXML
-    private ImageView body;
-    @FXML
-    private ImageView yellowButton;
-    @FXML
-    private ImageView greenButton;
-    @FXML
-    private ImageView redButton;
-    @FXML
-    private ImageView blueButton;
-    @FXML
-    private ImageView mainMenuButton;
-    @FXML
-    private Button greenBtn;
-    @FXML
-    private Button yellowBtn;
-    @FXML
-    private Button redBtn;
-    @FXML
-    private Button blueBtn;
-    @FXML
-    private Button centerBtn;
-    @FXML
-    private Button mainMenuBtn;
-    public Queue<Integer> trueSubsequence = new LinkedList<>();
-    public Queue<Integer> userSubsequence = new LinkedList<>();
     private boolean record = false;
     public boolean playersTurn = false;
+    public Queue<Integer> trueSubsequence = new LinkedList<>();
+    public Queue<Integer> userSubsequence = new LinkedList<>();
     private final double width = (int)Screen.getPrimary().getBounds().getWidth();
     private final double height = (int)Screen.getPrimary().getBounds().getHeight();
     private final double trueWidth = width / 1800.0;
@@ -84,7 +55,7 @@ public class SimonGame implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpScene();
-        centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
+        centerButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
         score = new Score(stackPane, firstNumberScore, rsc);
     }
     private void setPath() {
@@ -111,7 +82,7 @@ public class SimonGame implements Initializable {
     public void gameRun() {
         if(demonstration != null && demonstration.isAlive())
             demonstration.interrupt();
-        saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveInactive.png"));
+        saveResultButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveInactive.png"));
         record = false;
         score.deleteScore();
         totalScore = 0;
@@ -130,7 +101,7 @@ public class SimonGame implements Initializable {
             stringSubsequence.append(integer.toString()).append(" ");
         }
         trueSubsequenceLabel.setText(stringSubsequence.toString());
-        demonstration = new Demonstration(rsc, greenButton, redButton, blueButton, yellowButton,
+        demonstration = new Demonstration(rsc, greenButtonImage, redButtonImage, blueButtonImage, yellowButtonImage,
                 trueSubsequence);
         demonstration.start();
     }
@@ -143,17 +114,17 @@ public class SimonGame implements Initializable {
         body.setFitWidth(getDpX(1122));
     }
     private void allButtonsDisable() {
-        greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenDefault.png"));
-        redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
-        blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
-        yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
+        greenButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenDefault.png"));
+        redButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
+        blueButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
+        yellowButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
     }
     private void setSaveResultButton() {
-        saveResultButton.setFitHeight(getDpY(150));
-        saveResultBtn.setPrefHeight(getDpY(150));
-        saveResultBtn.setPrefWidth(getDpX(559));
-        StackPane.setMargin(saveResultBtn, new Insets(0, getDpX(5), getDpY(30), 0));
+        saveResultButtonImage.setFitHeight(getDpY(150));
+        saveResultButton.setPrefHeight(getDpY(150));
+        saveResultButton.setPrefWidth(getDpX(559));
         StackPane.setMargin(saveResultButton, new Insets(0, getDpX(5), getDpY(30), 0));
+        StackPane.setMargin(saveResultButtonImage, new Insets(0, getDpX(5), getDpY(30), 0));
     }
     private void setEditTextYourName() {
         editTextYourName.setMaxWidth(getDpX(465));
@@ -177,55 +148,55 @@ public class SimonGame implements Initializable {
         StackPane.setMargin(scoreImage, new Insets(0, getDpX(40), getDpY(400), 0));
     }
     private void setCenterButton() {
-        centerButton.setFitHeight(getDpY(354));
-        centerButton.setFitWidth(getDpX(354));
-        centerBtn.setPrefWidth(getDpX(257));
-        centerBtn.setPrefHeight(getDpY(232));
+        centerButtonImage.setFitHeight(getDpY(354));
+        centerButtonImage.setFitWidth(getDpX(354));
+        centerButton.setPrefWidth(getDpX(257));
+        centerButton.setPrefHeight(getDpY(232));
     }
     private void setBlueButton() {
-        blueButton.setFitHeight(getDpY(472));
-        blueButton.setFitWidth(getDpX(473));
-        blueButton.setLayoutX(getDpX(924));
-        blueButton.setLayoutY(getDpY(594));
-        blueBtn.setPrefWidth(getDpX(438));
-        blueBtn.setPrefHeight(getDpY(238));
-        blueBtn.setLayoutX(getDpX(935));
-        blueBtn.setLayoutY(getDpY(689));
+        blueButtonImage.setFitHeight(getDpY(472));
+        blueButtonImage.setFitWidth(getDpX(473));
+        blueButtonImage.setLayoutX(getDpX(924));
+        blueButtonImage.setLayoutY(getDpY(594));
+        blueButton.setPrefWidth(getDpX(438));
+        blueButton.setPrefHeight(getDpY(238));
+        blueButton.setLayoutX(getDpX(935));
+        blueButton.setLayoutY(getDpY(689));
     }
     private void setRedButton() {
-        redButton.setFitHeight(getDpY(473));
-        redButton.setFitWidth(getDpX(473));
-        redButton.setLayoutX(getDpX(930));
-        redButton.setLayoutY((getDpY(72)));
-        redBtn.setPrefWidth(getDpX(438));
-        redBtn.setPrefHeight(getDpY(238));
-        redBtn.setLayoutX(getDpX(935));
-        redBtn.setLayoutY(getDpY(194));
+        redButtonImage.setFitHeight(getDpY(473));
+        redButtonImage.setFitWidth(getDpX(473));
+        redButtonImage.setLayoutX(getDpX(930));
+        redButtonImage.setLayoutY((getDpY(72)));
+        redButton.setPrefWidth(getDpX(438));
+        redButton.setPrefHeight(getDpY(238));
+        redButton.setLayoutX(getDpX(935));
+        redButton.setLayoutY(getDpY(194));
     }
     private void setYellowButton() {
-        yellowButton.setFitHeight(getDpY(472));
-        yellowButton.setFitWidth(getDpX(472));
-        yellowButton.setLayoutX(getDpX(402));
-        yellowButton.setLayoutY(getDpY(594));
-        yellowBtn.setPrefWidth(getDpX(438));
-        yellowBtn.setPrefHeight(getDpY(238));
-        yellowBtn.setLayoutX(getDpX(429));
-        yellowBtn.setLayoutY(getDpY(689));
+        yellowButtonImage.setFitHeight(getDpY(472));
+        yellowButtonImage.setFitWidth(getDpX(472));
+        yellowButtonImage.setLayoutX(getDpX(402));
+        yellowButtonImage.setLayoutY(getDpY(594));
+        yellowButton.setPrefWidth(getDpX(438));
+        yellowButton.setPrefHeight(getDpY(238));
+        yellowButton.setLayoutX(getDpX(429));
+        yellowButton.setLayoutY(getDpY(689));
     }
     private void setGreenButton() {
-        greenButton.setFitHeight(getDpY(473));
-        greenButton.setFitWidth(getDpX(473));
-        greenButton.setLayoutX(getDpX(399));
-        greenButton.setLayoutY(getDpY(67));
-        greenBtn.setPrefWidth(getDpX(438));
-        greenBtn.setPrefHeight(getDpY(238));
-        greenBtn.setLayoutX(getDpX(429));
-        greenBtn.setLayoutY(getDpY(194));
+        greenButtonImage.setFitHeight(getDpY(473));
+        greenButtonImage.setFitWidth(getDpX(473));
+        greenButtonImage.setLayoutX(getDpX(399));
+        greenButtonImage.setLayoutY(getDpY(67));
+        greenButton.setPrefWidth(getDpX(438));
+        greenButton.setPrefHeight(getDpY(238));
+        greenButton.setLayoutX(getDpX(429));
+        greenButton.setLayoutY(getDpY(194));
     }
     private void setMainMenuButton() {
-        mainMenuButton.setFitHeight(getDpY(150));
-        mainMenuBtn.setPrefWidth(getDpX(336));
-        mainMenuBtn.setPrefHeight(getDpY(150));
+        mainMenuButtonImage.setFitHeight(getDpY(150));
+        mainMenuButton.setPrefWidth(getDpX(336));
+        mainMenuButton.setPrefHeight(getDpY(150));
     }
     @FXML
     public void goToMainMenu(ActionEvent event) throws IOException {
@@ -245,10 +216,10 @@ public class SimonGame implements Initializable {
     }
     public void checkCorrectnessSubsequence(int indexButton) {
         if(!areEqual(indexButton, Objects.requireNonNull(userSubsequence.poll()))) {
-            centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
+            centerButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonLitUp.png"));
             try {
-                AllButtonBlink allButtonBlink = new AllButtonBlink(rsc, greenButton, redButton,
-                        blueButton, yellowButton);
+                AllButtonBlink allButtonBlink = new AllButtonBlink(rsc, greenButtonImage, redButtonImage,
+                        blueButtonImage, yellowButtonImage);
                 allButtonBlink.start();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -260,7 +231,7 @@ public class SimonGame implements Initializable {
         else if(userSubsequence.isEmpty()) {
             totalScore++;
             record = true;
-            saveResultButtonOnExited();
+            setSaveResultButtonActive();
             score.setupScore(totalScore);
             continueDemonstration();
         }
@@ -271,89 +242,95 @@ public class SimonGame implements Initializable {
                 editTextYourName.setText("");
             if(editTextYourName.getText().length() >= maxLength)
                 editTextYourName.setText(editTextYourName.getText().substring(0, maxLength));
-            saveResultButtonOnExited();
+            setSaveResultButtonActive();
         });
     }
     @FXML
-    private void blueColorSelected() {
+    private void gameButtonPressed(ActionEvent event) {
         if(demonstration != null && !demonstration.isAlive() && playersTurn) {
-            checkCorrectnessSubsequence(2);
+            switch(((Button)event.getSource()).getId()) {
+                case "greenButton" -> checkCorrectnessSubsequence(0);
+                case "redButton" -> checkCorrectnessSubsequence(1);
+                case "blueButton" -> checkCorrectnessSubsequence(2);
+                case "yellowButton" -> checkCorrectnessSubsequence(3);
+            }
         }
     }
     @FXML
-    private void redColorSelected() {
-        if(demonstration != null && !demonstration.isAlive() && playersTurn) {
-            checkCorrectnessSubsequence(1);
-        }
-    }
-    @FXML
-    private void yellowColorSelected() {
-        if(demonstration != null && !demonstration.isAlive() && playersTurn) {
-            checkCorrectnessSubsequence(3);
-        }
-    }
-    @FXML
-    private void greenColorSelected() {
-        if(demonstration != null && !demonstration.isAlive() && playersTurn) {
-            checkCorrectnessSubsequence(0);
-        }
-    }
-    @FXML
-    private void blueButtonOnReleased() {
-        if(demonstration == null || !demonstration.isAlive())
-            blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
-    }
-    @FXML
-    private void blueButtonOnPressed() {
+    private void gameButtonMouseEvent(MouseEvent event) {
         if(demonstration == null || !demonstration.isAlive()) {
-            blueButton.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BluePressed.png"));
-            PlaySound.play(Sounds.PLAY_BUTTON_TWO);
+            switch(event.getEventType().toString()) {
+                case "MOUSE_RELEASED" -> buttonMouseReleased(((Button)event.getSource()).getId());
+                case "MOUSE_PRESSED" -> buttonMousePressed(((Button)event.getSource()).getId());
+            }
         }
     }
     @FXML
-    private void yellowButtonOnReleased() {
-        if(demonstration == null || !demonstration.isAlive())
-            yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
-    }
-    @FXML
-    private void yellowButtonOnPressed() {
-        if (demonstration == null || !demonstration.isAlive()) {
-            yellowButton.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowPressed.png"));
-            PlaySound.play(Sounds.PLAY_BUTTON_THREE);
+    private void functionButtonMouseEvent(MouseEvent event) {
+        switch(event.getEventType().toString()) {
+            case "MOUSE_PRESSED" -> buttonMousePressed(((Button)event.getSource()).getId());
+            case "MOUSE_RELEASED" -> buttonMouseReleased(((Button)event.getSource()).getId());
+            case "MOUSE_ENTERED" -> {
+                if(((Button)event.getSource()).getId().equals("mainMenuButton"))
+                    mainMenuButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuReleased.png"));
+                else if(record && !editTextYourName.getText().equals("") && ((Button)event.getSource()).getId().equals("saveResultButton"))
+                    saveResultButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveRelease.png"));
+            }
+            case "MOUSE_EXITED" -> {
+                if(((Button)event.getSource()).getId().equals("mainMenuButton"))
+                    mainMenuButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuDefault.png"));
+                else if(((Button)event.getSource()).getId().equals("saveResultButton"))
+                    setSaveResultButtonActive();
+            }
         }
     }
-    @FXML
-    private void redButtonOnReleased() {
-        if(demonstration == null || !demonstration.isAlive())
-            redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
-    }
-    @FXML
-    private void redButtonOnPressed() {
-        if(demonstration == null || !demonstration.isAlive()) {
-            redButton.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedPressed.png"));
-            PlaySound.play(Sounds.PLAY_BUTTON_ONE);
+    private void buttonMousePressed(String id) {
+        switch(id) {
+            case "greenButton" -> {
+                greenButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenPressed.png"));
+                PlaySound.play(Sounds.PLAY_BUTTON_ZERO);
+            }
+            case "redButton" -> {
+                redButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedPressed.png"));
+                PlaySound.play(Sounds.PLAY_BUTTON_ONE);
+            }
+            case "blueButton" -> {
+                blueButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BluePressed.png"));
+                PlaySound.play(Sounds.PLAY_BUTTON_TWO);
+            }
+            case "yellowButton" -> {
+                yellowButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowPressed.png"));
+                PlaySound.play(Sounds.PLAY_BUTTON_THREE);
+            }
+            case "mainMenuButton" -> {
+                mainMenuButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuPressed.png"));
+                PlaySound.play(Sounds.PLAY_TAP);
+            }
+            case "centerButton" -> {
+                centerButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonPressed.png"));
+                PlaySound.play(Sounds.PLAY_TAP);
+            }
+            case "saveResultButton" -> {
+                if(record && !editTextYourName.getText().equals("")) {
+                    saveResultButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SavePressed.png"));
+                    PlaySound.play(Sounds.PLAY_SAVE);
+                }
+            }
         }
     }
-    @FXML
-    private void greenButtonOnReleased() {
-        if(demonstration == null || !demonstration.isAlive())
-            greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenDefault.png"));
-    }
-    @FXML
-    private void greenButtonOnPressed() {
-        if(demonstration == null || !demonstration.isAlive()) {
-            greenButton.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenPressed.png"));
-            PlaySound.play(Sounds.PLAY_BUTTON_ZERO);
+    private void buttonMouseReleased(String id) {
+        switch(id) {
+            case "greenButton" -> greenButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Green/GreenDefault.png"));
+            case "redButton" -> redButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Red/RedDefault.png"));
+            case "blueButton" -> blueButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Blue/BlueDefault.png"));
+            case "yellowButton" -> yellowButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/Yellow/YellowDefault.png"));
+            case "mainMenuButton" -> mainMenuButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuReleased.png"));
+            case "centerButton" -> centerButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonDefault.png"));
+            case "saveResultButton" -> {
+                if(record && !editTextYourName.getText().equals(""))
+                    saveResultButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveRelease.png"));
+            }
         }
-    }
-    @FXML
-    private void centerButtonOnPressed() {
-        PlaySound.play(Sounds.PLAY_TAP);
-        centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonPressed.png"));
-    }
-    @FXML
-    private void centerButtonOnReleased() {
-        centerButton.setImage(new Image("file:" + rsc + "/Image/Simon/CenterButton/CenterButtonDefault.png"));
     }
     @FXML
     private void beginSaveResult() {
@@ -362,44 +339,9 @@ public class SimonGame implements Initializable {
             saveData.start();
         }
     }
-    @FXML
-    private void saveResultButtonOnEntered() {
+    private void setSaveResultButtonActive() {
         if(record && !editTextYourName.getText().equals(""))
-            saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveRelease.png"));
-    }
-    @FXML
-    private void saveResultButtonOnExited() {
-        if(record && !editTextYourName.getText().equals(""))
-            saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveDefault.png"));
-    }
-    @FXML
-    private void saveResultButtonOnPressed() {
-        if(record && !editTextYourName.getText().equals("")) {
-            saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SavePressed.png"));
-            PlaySound.play(Sounds.PLAY_SAVE);
-        }
-    }
-    @FXML
-    private void saveResultButtonOnReleased() {
-        if(record && !editTextYourName.getText().equals(""))
-            saveResultButton.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveRelease.png"));
-    }
-    @FXML
-    private void mainMenuButtonOnEntered() {
-        mainMenuButton.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuReleased.png"));
-    }
-    @FXML
-    private void mainMenuButtonOnExited() {
-        mainMenuButton.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuDefault.png"));
-    }
-    @FXML
-    private void mainMenuButtonOnPressed() {
-        mainMenuButton.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuPressed.png"));
-        PlaySound.play(Sounds.PLAY_TAP);
-    }
-    @FXML
-    protected void mainMenuButtonOnReleased() {
-        mainMenuButton.setImage(new Image("file:" + rsc + "/Image/Simon/MainMenuButton/ButtonMenuReleased.png"));
+            saveResultButtonImage.setImage(new Image("file:" + rsc + "/Image/Simon/SaveResultButton/SaveDefault.png"));
     }
     double getDpX(double px) {
         return px * trueWidth;

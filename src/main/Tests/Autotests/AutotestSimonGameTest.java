@@ -23,18 +23,18 @@ import java.util.Map;
 
 public class AutotestSimonGameTest extends ApplicationTest {
     private final String KEY_NEW_GAME_BUTTON = "#newGameButton";
-    private final String KEY_CENTER_BUTTON = "#centerBtn";
+    private final String KEY_CENTER_BUTTON = "#centerButton";
     private final String KEY_TRUE_SUBSEQUENCE = "#trueSubsequenceLabel";
-    private final String KEY_BUTTON_ZERO = "#greenBtn";
-    private final String KEY_BUTTON_ONE = "#redBtn";
-    private final String KEY_BUTTON_TWO = "#blueBtn";
-    private final String KEY_BUTTON_THREE = "#yellowBtn";
-    private final String KEY_SAVE_BUTTON = "#saveResultBtn";
+    private final String KEY_BUTTON_ZERO = "#greenButton";
+    private final String KEY_BUTTON_ONE = "#redButton";
+    private final String KEY_BUTTON_TWO = "#blueButton";
+    private final String KEY_BUTTON_THREE = "#yellowButton";
+    private final String KEY_SAVE_BUTTON = "#saveResultButton";
     private final String KEY_SCORE_IMAGE = "#firstNumberScore";
     private final String KEY_EDIT_TEXT = "#editTextYourName";
-    private final String KEY_MAIN_MENU = "#mainMenuBtn";
+    private final String KEY_MAIN_MENU = "#mainMenuButton";
     private final String KEY_MAIN_MENU_RESULT = "#MainMenu";
-    private final String KEY_RESULT_BUTTON = "#resultsBtn";
+    private final String KEY_RESULT_BUTTON = "#resultsButton";
     @Override
     public void start(Stage stage) throws Exception {
         super.start(stage);
